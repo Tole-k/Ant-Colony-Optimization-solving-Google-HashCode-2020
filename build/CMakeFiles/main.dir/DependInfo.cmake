@@ -9,7 +9,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/anatol/Documents/GitHub/Mroovy/AntColonyOptimization.cpp" "CMakeFiles/main.dir/AntColonyOptimization.cpp.o" "gcc" "CMakeFiles/main.dir/AntColonyOptimization.cpp.o.d"
-  "/home/anatol/Documents/GitHub/Mroovy/GreedyAnt.cpp" "CMakeFiles/main.dir/GreedyAnt.cpp.o" "gcc" "CMakeFiles/main.dir/GreedyAnt.cpp.o.d"
   "/home/anatol/Documents/GitHub/Mroovy/ant.cpp" "CMakeFiles/main.dir/ant.cpp.o" "gcc" "CMakeFiles/main.dir/ant.cpp.o.d"
   "/home/anatol/Documents/GitHub/Mroovy/library.cpp" "CMakeFiles/main.dir/library.cpp.o" "gcc" "CMakeFiles/main.dir/library.cpp.o.d"
   "/home/anatol/Documents/GitHub/Mroovy/main.cpp" "CMakeFiles/main.dir/main.cpp.o" "gcc" "CMakeFiles/main.dir/main.cpp.o.d"

@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/main.dir/AntColonyOptimization.cpp.o"
   "CMakeFiles/main.dir/AntColonyOptimization.cpp.o.d"
-  "CMakeFiles/main.dir/GreedyAnt.cpp.o"
-  "CMakeFiles/main.dir/GreedyAnt.cpp.o.d"
   "CMakeFiles/main.dir/ant.cpp.o"
   "CMakeFiles/main.dir/ant.cpp.o.d"
   "CMakeFiles/main.dir/library.cpp.o"

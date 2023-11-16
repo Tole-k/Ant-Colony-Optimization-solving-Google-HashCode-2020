@@ -153,30 +153,6 @@ AntColonyOptimization.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/AntColonyOptimization.cpp.s
 .PHONY : AntColonyOptimization.cpp.s
 
-GreedyAnt.o: GreedyAnt.cpp.o
-.PHONY : GreedyAnt.o
-
-# target to build an object file
-GreedyAnt.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/GreedyAnt.cpp.o
-.PHONY : GreedyAnt.cpp.o
-
-GreedyAnt.i: GreedyAnt.cpp.i
-.PHONY : GreedyAnt.i
-
-# target to preprocess a source file
-GreedyAnt.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/GreedyAnt.cpp.i
-.PHONY : GreedyAnt.cpp.i
-
-GreedyAnt.s: GreedyAnt.cpp.s
-.PHONY : GreedyAnt.s
-
-# target to generate assembly for a file
-GreedyAnt.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/GreedyAnt.cpp.s
-.PHONY : GreedyAnt.cpp.s
-
 ant.o: ant.cpp.o
 .PHONY : ant.o
 
@@ -261,9 +237,6 @@ help:
 	@echo "... AntColonyOptimization.o"
 	@echo "... AntColonyOptimization.i"
 	@echo "... AntColonyOptimization.s"
-	@echo "... GreedyAnt.o"
-	@echo "... GreedyAnt.i"
-	@echo "... GreedyAnt.s"
 	@echo "... ant.o"
 	@echo "... ant.i"
 	@echo "... ant.s"
