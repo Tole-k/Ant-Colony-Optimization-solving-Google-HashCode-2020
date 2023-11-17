@@ -7,4 +7,4 @@ project(main
 SET(GCC_COVERAGE_COMPILE_FLAGS "--static -O3")
 add_definitions(${GCC_COVERAGE_COMPILE_FLAGS})
 
-add_executable(${PROJECT_NAME} main.cpp library.cpp AntColonyOptimization.cpp book.h ant.cpp)
+add_executable(${PROJECT_NAME} main.cpp library.cpp AntColonyOptimization.cpp book.h Ant.cpp GreedyAnt.cpp PheromonesAnt.cpp)

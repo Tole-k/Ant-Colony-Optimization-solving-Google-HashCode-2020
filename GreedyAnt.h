@@ -6,7 +6,7 @@ class GreedyAnt : public Ant
 {
 public:
     int nextLibrary(std::vector<Library> &libraries, int iter, int p) override;
-    GreedyAnt(int deadline, int numberOfLibraries, int type);
+    GreedyAnt(int deadline, int numberOfLibraries);
 };
 
 #endif // CPP_GREEDYANT_H
