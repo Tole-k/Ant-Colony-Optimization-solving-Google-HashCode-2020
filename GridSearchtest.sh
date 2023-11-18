@@ -25,7 +25,7 @@ for path in Round/*; do
 					filename=$(basename $path .txt)
 					if [[ ! -f output/$filename"-"$i"_"$j"_"$k"_"$l.out ]]; then
 						# echo "file" output/$filename"-"$i"_"$j"_"$k"_"$l.out "not exist"
-					 	./$name $i $j $k $l < $path > output/$filename"-"$i"_"$k"_"$k"_"$l.out &
+					 	./$name $i $j $k $l < $path > output/$filename"-"$i"_"$j"_"$k"_"$l.out &
 					fi
 
 				#	./$name < $path 
