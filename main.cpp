@@ -6,10 +6,10 @@
 #include <cmath>
 #include <random>
 #include <unordered_set>
-#include "ant.h"
+#include "Ant.h"
 #include "AntColonyOptimization.h"
-#include "library.h"
-#include "book.h"
+#include "Library.h"
+#include "Book.h"
 #include <chrono>
 
 void solve()
@@ -56,7 +56,7 @@ void solve()
     // Just random number for now
     int numberOfIterations = 1000;
 
-    Ant::generator.seed(20);
+    //Ant::generator.seed(20);
     srand(42);
     ACO instance(numberOfAnts, days, 0.05, numOfLibraries, numberOfIterations);
 

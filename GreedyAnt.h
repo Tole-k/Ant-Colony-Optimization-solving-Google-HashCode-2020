@@ -1,6 +1,6 @@
 #ifndef CPP_GREEDYANT_H
 #define CPP_GREEDYANT_H
-#include "ant.h"
+#include "Ant.h"
 
 class GreedyAnt : public Ant
 {

@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/library.cpp.o CMakeFiles/main.dir/AntColonyOptimization.cpp.o CMakeFiles/main.dir/ant.cpp.o -o main 
+/usr/bin/c++ -g CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/Library.cpp.o CMakeFiles/main.dir/AntColonyOptimization.cpp.o CMakeFiles/main.dir/Ant.cpp.o CMakeFiles/main.dir/GreedyAnt.cpp.o CMakeFiles/main.dir/PheromoneAnt.cpp.o -o main 

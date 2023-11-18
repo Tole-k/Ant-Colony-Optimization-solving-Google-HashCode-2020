@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = 
 
-CXX_FLAGS = -g -fdiagnostics-color=always   --static -O3
+CXX_FLAGS = -g -fdiagnostics-color=always   -Wall -Wextra --pedantic
 

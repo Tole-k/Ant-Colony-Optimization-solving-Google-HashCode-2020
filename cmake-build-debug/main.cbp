@@ -82,25 +82,37 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/anatol/Documents/GitHub/Mroovy/Ant.cpp">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/home/anatol/Documents/GitHub/Mroovy/Ant.h">
+			<Option target="main"/>
+		</Unit>
 		<Unit filename="/home/anatol/Documents/GitHub/Mroovy/AntColonyOptimization.cpp">
 			<Option target="main"/>
 		</Unit>
 		<Unit filename="/home/anatol/Documents/GitHub/Mroovy/AntColonyOptimization.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/home/anatol/Documents/GitHub/Mroovy/ant.cpp">
+		<Unit filename="/home/anatol/Documents/GitHub/Mroovy/Book.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/home/anatol/Documents/GitHub/Mroovy/ant.h">
+		<Unit filename="/home/anatol/Documents/GitHub/Mroovy/GreedyAnt.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/home/anatol/Documents/GitHub/Mroovy/book.h">
+		<Unit filename="/home/anatol/Documents/GitHub/Mroovy/GreedyAnt.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/home/anatol/Documents/GitHub/Mroovy/library.cpp">
+		<Unit filename="/home/anatol/Documents/GitHub/Mroovy/Library.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/home/anatol/Documents/GitHub/Mroovy/library.h">
+		<Unit filename="/home/anatol/Documents/GitHub/Mroovy/Library.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/home/anatol/Documents/GitHub/Mroovy/PheromoneAnt.cpp">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/home/anatol/Documents/GitHub/Mroovy/PheromoneAnt.h">
 			<Option target="main"/>
 		</Unit>
 		<Unit filename="/home/anatol/Documents/GitHub/Mroovy/main.cpp">

@@ -2,7 +2,7 @@
 #define LIBRARY_H
 
 #include <vector>
-#include "book.h"
+#include "Book.h"
 
 class Library
 {
@@ -25,7 +25,7 @@ public:
     void calculateTotalTime();
     void calculatePrefixSums();
 	void calculatePheromonesPrefixSums();
-    double getApproxValue(int time, int type);
+    double getApproxValue(int time);
 	double getBookPheromones(int time);
     std::vector<Book> getBooks(int numberOfBooksToReturn);
     int getNumberOfBooksScanned(int deadline);

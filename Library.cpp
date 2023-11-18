@@ -1,7 +1,7 @@
-#include "library.h"
+#include "Library.h"
 #include <algorithm>
 #include <iostream>
-#include "ant.h"
+#include "Ant.h"
 Library::Library() : m_numberOfBooks(0),
 					 m_totalValue(0),
 				     m_totalTime(0),
@@ -69,19 +69,13 @@ void Library::calculatePheromonesPrefixSums() {
 	}
 }
 
-double Library::getApproxValue(int time, int type)
+double Library::getApproxValue(int time)
 {
 	if (time <= m_signUpTime)
 		return -1.0;
 
 	double res;
-	if (type == 0)
-		res = (double)m_prefixSums[std::min(time - m_signUpTime - 1, m_maxTime - 1)] / m_signUpTime;
-	else if (type == 1)
-		res = (double)m_prefixSums[std::min(time - m_signUpTime - 1, m_maxTime - 1)] / (m_signUpTime + std::min(time, m_maxTime - 1));
-	else
-		res = (double)m_prefixSums[std::min(time - m_signUpTime - 1, m_maxTime - 1)];
-
+	res = (double)m_prefixSums[std::min(time - m_signUpTime - 1, m_maxTime - 1)] / m_signUpTime;
 	return res;
 }
 

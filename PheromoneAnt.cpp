@@ -1,6 +1,6 @@
 
 #include "PheromoneAnt.h"
-PheromoneAnt::Ant(int deadline, int numberOfLibraries):Ant(deadline, numberOfLibraries)
+PheromoneAnt::PheromoneAnt(int deadline, int numberOfLibraries):Ant(deadline, numberOfLibraries)
 {}
 int PheromoneAnt::pickLibrary(std::vector<std::pair<double, int>> &probabilities) 
 {
@@ -24,7 +24,7 @@ int PheromoneAnt::nextLibrary(std::vector<Library> &libraries, int iter, int p)
 	probabilities.push_back({0, -1});
 
 	double previous{};
-	for (int i = 0; i < libraries.size(); i++)
+	for (size_t i = 0; i < libraries.size(); i++)
 	{
 		if (!m_signedIn[i])
 		{
@@ -56,7 +56,7 @@ int PheromoneAnt::nextLibrary(std::vector<Library> &libraries, int iter, int p)
 double PheromoneAnt::calculateProbability(Library &lib, int idx, int iter, int p)
 {
 
-	double totalValue = lib.getApproxValue(m_deadline, m_type);
+	double totalValue = lib.getApproxValue(m_deadline);
 	if (totalValue == -1.0)
 		return -1.0;
 
@@ -71,6 +71,6 @@ double PheromoneAnt::calculateProbability(Library &lib, int idx, int iter, int p
 
 	double probability = pow(totalValue, m_alfa) * pow(numOfPheromones, m_beta) * pow(numOfBooksPheromones, m_gamma);
 	// double probability = pow(totalValue, m_alfa) * pow(numOfPheromones, m_beta);
-m_signedIn(numberOfLibraries)
+	// m_signedIn(numOfLibraries)
 	return probability;
 }

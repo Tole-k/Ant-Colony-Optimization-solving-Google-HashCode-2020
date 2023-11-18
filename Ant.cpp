@@ -1,4 +1,4 @@
-#include "ant.h"
+#include "Ant.h"
 #include <iostream>
 
 double pow(double base, int exponent)
@@ -11,19 +11,15 @@ double pow(double base, int exponent)
 	return res;
 }
 
-
-
-int Ant::pickBest(std::vector<std::pair<double, int>> &probabilities)
+/*int Ant::pickBest(std::vector<std::pair<double, int>> &probabilities)
 {
 	sort(probabilities.begin(), probabilities.end());
 	return probabilities.back().second;
-}
+}*/
 
-Ant::Ant(int deadline, int numberOfLibraries, int type)
-	: m_signedIn(numberOfLibraries)
+Ant::Ant(int deadline, int numberOfLibraries)
+	: m_signedIn(numberOfLibraries), m_deadline(deadline)
 {
-	m_deadline = deadline;
-	m_type = type;
 	m_totalValue = 0;
 }
 
@@ -59,7 +55,7 @@ int Ant::mutate(std::vector<Library> &libraries, int deadline)
 				{
 					scanned.insert(bookIdx);
 					total += bookValue;
-					if(++scannedFromThisLib >= signedIn)
+					if (++scannedFromThisLib >= signedIn)
 						break;
 				}
 			}
@@ -85,7 +81,7 @@ int Ant::totalValue(std::vector<Library> &libraries, int deadline)
 {
 	int total{};
 	std::unordered_set<int> scanned;
-	//std::cerr << "totalValue " << deadline << " " << m_path[0].first << " " << m_path[0].second << std::endl;
+	// std::cerr << "totalValue " << deadline << " " << m_path[0].first << " " << m_path[0].second << std::endl;
 	for (auto &lib : m_path)
 	{
 		int signedIn = libraries[lib.first].getNumberOfBooksScanned(deadline);
@@ -97,7 +93,7 @@ int Ant::totalValue(std::vector<Library> &libraries, int deadline)
 			{
 				scanned.insert(bookIdx);
 				total += bookValue;
-				if(++scannedFromThisLib >= signedIn)
+				if (++scannedFromThisLib >= signedIn)
 					break;
 			}
 		}
@@ -109,7 +105,7 @@ int Ant::totalValue(std::vector<Library> &libraries, int deadline)
 void Ant::calculatePheromonesDeltas(std::vector<Library> &libraries, int bestValue)
 {
 	int totalValue = getTotalValue();
-	for (int i = 0; i < m_path.size() - 1; i++)
+	for (size_t i = 0; i < m_path.size() - 1; i++)
 	{
 		deltaPheromones[std::make_pair(i, m_path[i + 1].first)] += (1 / (1 + (double)(bestValue - totalValue) / totalValue));
 		bookDeltaPheromones[m_path[i].first] += (1 / (1 + (double)(bestValue - totalValue) / totalValue)) / 7;
@@ -123,25 +119,25 @@ void Ant::clear(int deadline)
 		it = 0;
 	m_path.clear();
 	m_totalValue = 0;
-    deltaPheromones.clear();
-	for(auto & it : bookDeltaPheromones)
+	deltaPheromones.clear();
+	for (auto &it : bookDeltaPheromones)
 		it = 0;
 }
 
 std::vector<int> Ant::GetPath()
 {
 	std::vector<int> toReturn(m_path.size());
-	for (int i = 0; i < m_path.size(); i++)
+	for (size_t i = 0; i < m_path.size(); i++)
 		toReturn[i] = m_path[i].first;
 	return toReturn;
 }
 
-int Ant::m_alfa = 5.0;
-int Ant::m_beta = 1.0;
-int Ant::m_gamma = 1.0;
+// int Ant::m_alfa = 5.0;
+// int Ant::m_beta = 1.0;
+// int Ant::m_gamma = 1.0;
 std::map<std::pair<int, int>, std::pair<double, int>> Ant::pheromones;
 std::map<std::pair<int, int>, double> Ant::deltaPheromones;
-std::default_random_engine Ant::generator;
+// std::default_random_engine Ant::generator;
 
 std::vector<std::pair<double, int>> Ant::bookPheromones;
 std::vector<double> Ant::bookDeltaPheromones;

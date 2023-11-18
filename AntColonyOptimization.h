@@ -2,7 +2,7 @@
 #define ANT_COLONY_OPTIMIZATION_H
 #include <vector>
 #include <array>
-#include "ant.h"
+#include "Ant.h"
 
 
 class ACO

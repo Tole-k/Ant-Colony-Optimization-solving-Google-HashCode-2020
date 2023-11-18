@@ -129,6 +129,30 @@ main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
+Ant.o: Ant.cpp.o
+.PHONY : Ant.o
+
+# target to build an object file
+Ant.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Ant.cpp.o
+.PHONY : Ant.cpp.o
+
+Ant.i: Ant.cpp.i
+.PHONY : Ant.i
+
+# target to preprocess a source file
+Ant.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Ant.cpp.i
+.PHONY : Ant.cpp.i
+
+Ant.s: Ant.cpp.s
+.PHONY : Ant.s
+
+# target to generate assembly for a file
+Ant.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Ant.cpp.s
+.PHONY : Ant.cpp.s
+
 AntColonyOptimization.o: AntColonyOptimization.cpp.o
 .PHONY : AntColonyOptimization.o
 
@@ -153,53 +177,77 @@ AntColonyOptimization.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/AntColonyOptimization.cpp.s
 .PHONY : AntColonyOptimization.cpp.s
 
-ant.o: ant.cpp.o
-.PHONY : ant.o
+GreedyAnt.o: GreedyAnt.cpp.o
+.PHONY : GreedyAnt.o
 
 # target to build an object file
-ant.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/ant.cpp.o
-.PHONY : ant.cpp.o
+GreedyAnt.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/GreedyAnt.cpp.o
+.PHONY : GreedyAnt.cpp.o
 
-ant.i: ant.cpp.i
-.PHONY : ant.i
+GreedyAnt.i: GreedyAnt.cpp.i
+.PHONY : GreedyAnt.i
 
 # target to preprocess a source file
-ant.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/ant.cpp.i
-.PHONY : ant.cpp.i
+GreedyAnt.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/GreedyAnt.cpp.i
+.PHONY : GreedyAnt.cpp.i
 
-ant.s: ant.cpp.s
-.PHONY : ant.s
+GreedyAnt.s: GreedyAnt.cpp.s
+.PHONY : GreedyAnt.s
 
 # target to generate assembly for a file
-ant.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/ant.cpp.s
-.PHONY : ant.cpp.s
+GreedyAnt.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/GreedyAnt.cpp.s
+.PHONY : GreedyAnt.cpp.s
 
-library.o: library.cpp.o
-.PHONY : library.o
+Library.o: Library.cpp.o
+.PHONY : Library.o
 
 # target to build an object file
-library.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/library.cpp.o
-.PHONY : library.cpp.o
+Library.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Library.cpp.o
+.PHONY : Library.cpp.o
 
-library.i: library.cpp.i
-.PHONY : library.i
+Library.i: Library.cpp.i
+.PHONY : Library.i
 
 # target to preprocess a source file
-library.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/library.cpp.i
-.PHONY : library.cpp.i
+Library.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Library.cpp.i
+.PHONY : Library.cpp.i
 
-library.s: library.cpp.s
-.PHONY : library.s
+Library.s: Library.cpp.s
+.PHONY : Library.s
 
 # target to generate assembly for a file
-library.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/library.cpp.s
-.PHONY : library.cpp.s
+Library.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Library.cpp.s
+.PHONY : Library.cpp.s
+
+PheromoneAnt.o: PheromoneAnt.cpp.o
+.PHONY : PheromoneAnt.o
+
+# target to build an object file
+PheromoneAnt.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/PheromoneAnt.cpp.o
+.PHONY : PheromoneAnt.cpp.o
+
+PheromoneAnt.i: PheromoneAnt.cpp.i
+.PHONY : PheromoneAnt.i
+
+# target to preprocess a source file
+PheromoneAnt.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/PheromoneAnt.cpp.i
+.PHONY : PheromoneAnt.cpp.i
+
+PheromoneAnt.s: PheromoneAnt.cpp.s
+.PHONY : PheromoneAnt.s
+
+# target to generate assembly for a file
+PheromoneAnt.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/PheromoneAnt.cpp.s
+.PHONY : PheromoneAnt.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -234,15 +282,21 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... main"
+	@echo "... Ant.o"
+	@echo "... Ant.i"
+	@echo "... Ant.s"
 	@echo "... AntColonyOptimization.o"
 	@echo "... AntColonyOptimization.i"
 	@echo "... AntColonyOptimization.s"
-	@echo "... ant.o"
-	@echo "... ant.i"
-	@echo "... ant.s"
-	@echo "... library.o"
-	@echo "... library.i"
-	@echo "... library.s"
+	@echo "... GreedyAnt.o"
+	@echo "... GreedyAnt.i"
+	@echo "... GreedyAnt.s"
+	@echo "... Library.o"
+	@echo "... Library.i"
+	@echo "... Library.s"
+	@echo "... PheromoneAnt.o"
+	@echo "... PheromoneAnt.i"
+	@echo "... PheromoneAnt.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

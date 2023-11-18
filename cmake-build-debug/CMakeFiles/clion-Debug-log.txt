@@ -1,16 +1,4 @@
 /home/anatol/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /home/anatol/Documents/GitHub/Mroovy -B /home/anatol/Documents/GitHub/Mroovy/cmake-build-debug
 -- Configuring done (0.0s)
-CMake Error at CMakeLists.txt:10 (add_executable):
-  Cannot find source file:
-
-    PheromonesAnt.cpp
-
-  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .mpp .m .M .mm .ixx .cppm .h
-  .hh .h++ .hm .hpp .hxx .in .txx .f .F .for .f77 .f90 .f95 .f03 .hip .ispc
-
-
-CMake Error at CMakeLists.txt:10 (add_executable):
-  No SOURCES given to target: main
-
-
-CMake Generate step failed.  Build files cannot be regenerated correctly.
+-- Generating done (0.0s)
+-- Build files have been written to: /home/anatol/Documents/GitHub/Mroovy/cmake-build-debug

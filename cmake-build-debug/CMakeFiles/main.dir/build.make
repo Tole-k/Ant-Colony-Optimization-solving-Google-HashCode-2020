@@ -83,19 +83,19 @@ CMakeFiles/main.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anatol/Documents/GitHub/Mroovy/main.cpp -o CMakeFiles/main.dir/main.cpp.s
 
-CMakeFiles/main.dir/library.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/library.cpp.o: /home/anatol/Documents/GitHub/Mroovy/library.cpp
-CMakeFiles/main.dir/library.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/anatol/Documents/GitHub/Mroovy/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/library.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/library.cpp.o -MF CMakeFiles/main.dir/library.cpp.o.d -o CMakeFiles/main.dir/library.cpp.o -c /home/anatol/Documents/GitHub/Mroovy/library.cpp
+CMakeFiles/main.dir/Library.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/Library.cpp.o: /home/anatol/Documents/GitHub/Mroovy/Library.cpp
+CMakeFiles/main.dir/Library.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/anatol/Documents/GitHub/Mroovy/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/Library.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/Library.cpp.o -MF CMakeFiles/main.dir/Library.cpp.o.d -o CMakeFiles/main.dir/Library.cpp.o -c /home/anatol/Documents/GitHub/Mroovy/Library.cpp
 
-CMakeFiles/main.dir/library.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/library.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anatol/Documents/GitHub/Mroovy/library.cpp > CMakeFiles/main.dir/library.cpp.i
+CMakeFiles/main.dir/Library.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/Library.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anatol/Documents/GitHub/Mroovy/Library.cpp > CMakeFiles/main.dir/Library.cpp.i
 
-CMakeFiles/main.dir/library.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/library.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anatol/Documents/GitHub/Mroovy/library.cpp -o CMakeFiles/main.dir/library.cpp.s
+CMakeFiles/main.dir/Library.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/Library.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anatol/Documents/GitHub/Mroovy/Library.cpp -o CMakeFiles/main.dir/Library.cpp.s
 
 CMakeFiles/main.dir/AntColonyOptimization.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/AntColonyOptimization.cpp.o: /home/anatol/Documents/GitHub/Mroovy/AntColonyOptimization.cpp
@@ -111,37 +111,69 @@ CMakeFiles/main.dir/AntColonyOptimization.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/AntColonyOptimization.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anatol/Documents/GitHub/Mroovy/AntColonyOptimization.cpp -o CMakeFiles/main.dir/AntColonyOptimization.cpp.s
 
-CMakeFiles/main.dir/ant.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/ant.cpp.o: /home/anatol/Documents/GitHub/Mroovy/ant.cpp
-CMakeFiles/main.dir/ant.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/anatol/Documents/GitHub/Mroovy/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/ant.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/ant.cpp.o -MF CMakeFiles/main.dir/ant.cpp.o.d -o CMakeFiles/main.dir/ant.cpp.o -c /home/anatol/Documents/GitHub/Mroovy/ant.cpp
+CMakeFiles/main.dir/Ant.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/Ant.cpp.o: /home/anatol/Documents/GitHub/Mroovy/Ant.cpp
+CMakeFiles/main.dir/Ant.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/anatol/Documents/GitHub/Mroovy/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/Ant.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/Ant.cpp.o -MF CMakeFiles/main.dir/Ant.cpp.o.d -o CMakeFiles/main.dir/Ant.cpp.o -c /home/anatol/Documents/GitHub/Mroovy/Ant.cpp
 
-CMakeFiles/main.dir/ant.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/ant.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anatol/Documents/GitHub/Mroovy/ant.cpp > CMakeFiles/main.dir/ant.cpp.i
+CMakeFiles/main.dir/Ant.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/Ant.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anatol/Documents/GitHub/Mroovy/Ant.cpp > CMakeFiles/main.dir/Ant.cpp.i
 
-CMakeFiles/main.dir/ant.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/ant.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anatol/Documents/GitHub/Mroovy/ant.cpp -o CMakeFiles/main.dir/ant.cpp.s
+CMakeFiles/main.dir/Ant.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/Ant.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anatol/Documents/GitHub/Mroovy/Ant.cpp -o CMakeFiles/main.dir/Ant.cpp.s
+
+CMakeFiles/main.dir/GreedyAnt.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/GreedyAnt.cpp.o: /home/anatol/Documents/GitHub/Mroovy/GreedyAnt.cpp
+CMakeFiles/main.dir/GreedyAnt.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/anatol/Documents/GitHub/Mroovy/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/GreedyAnt.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/GreedyAnt.cpp.o -MF CMakeFiles/main.dir/GreedyAnt.cpp.o.d -o CMakeFiles/main.dir/GreedyAnt.cpp.o -c /home/anatol/Documents/GitHub/Mroovy/GreedyAnt.cpp
+
+CMakeFiles/main.dir/GreedyAnt.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/GreedyAnt.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anatol/Documents/GitHub/Mroovy/GreedyAnt.cpp > CMakeFiles/main.dir/GreedyAnt.cpp.i
+
+CMakeFiles/main.dir/GreedyAnt.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/GreedyAnt.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anatol/Documents/GitHub/Mroovy/GreedyAnt.cpp -o CMakeFiles/main.dir/GreedyAnt.cpp.s
+
+CMakeFiles/main.dir/PheromoneAnt.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/PheromoneAnt.cpp.o: /home/anatol/Documents/GitHub/Mroovy/PheromoneAnt.cpp
+CMakeFiles/main.dir/PheromoneAnt.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/anatol/Documents/GitHub/Mroovy/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/main.dir/PheromoneAnt.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/PheromoneAnt.cpp.o -MF CMakeFiles/main.dir/PheromoneAnt.cpp.o.d -o CMakeFiles/main.dir/PheromoneAnt.cpp.o -c /home/anatol/Documents/GitHub/Mroovy/PheromoneAnt.cpp
+
+CMakeFiles/main.dir/PheromoneAnt.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/PheromoneAnt.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anatol/Documents/GitHub/Mroovy/PheromoneAnt.cpp > CMakeFiles/main.dir/PheromoneAnt.cpp.i
+
+CMakeFiles/main.dir/PheromoneAnt.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/PheromoneAnt.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anatol/Documents/GitHub/Mroovy/PheromoneAnt.cpp -o CMakeFiles/main.dir/PheromoneAnt.cpp.s
 
 # Object files for target main
 main_OBJECTS = \
 "CMakeFiles/main.dir/main.cpp.o" \
-"CMakeFiles/main.dir/library.cpp.o" \
+"CMakeFiles/main.dir/Library.cpp.o" \
 "CMakeFiles/main.dir/AntColonyOptimization.cpp.o" \
-"CMakeFiles/main.dir/ant.cpp.o"
+"CMakeFiles/main.dir/Ant.cpp.o" \
+"CMakeFiles/main.dir/GreedyAnt.cpp.o" \
+"CMakeFiles/main.dir/PheromoneAnt.cpp.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
 main: CMakeFiles/main.dir/main.cpp.o
-main: CMakeFiles/main.dir/library.cpp.o
+main: CMakeFiles/main.dir/Library.cpp.o
 main: CMakeFiles/main.dir/AntColonyOptimization.cpp.o
-main: CMakeFiles/main.dir/ant.cpp.o
+main: CMakeFiles/main.dir/Ant.cpp.o
+main: CMakeFiles/main.dir/GreedyAnt.cpp.o
+main: CMakeFiles/main.dir/PheromoneAnt.cpp.o
 main: CMakeFiles/main.dir/build.make
 main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/anatol/Documents/GitHub/Mroovy/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/anatol/Documents/GitHub/Mroovy/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
