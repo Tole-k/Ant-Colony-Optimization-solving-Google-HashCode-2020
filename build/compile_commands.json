@@ -1,32 +1,32 @@
 [
 {
   "directory": "/home/anatol/Documents/GitHub/Mroovy/build",
-  "command": "/usr/bin/c++   -g   -Wall -Wextra --pedantic -o CMakeFiles/main.dir/main.cpp.o -c /home/anatol/Documents/GitHub/Mroovy/main.cpp",
+  "command": "/usr/bin/c++   -g   --static -O3 -o CMakeFiles/main.dir/main.cpp.o -c /home/anatol/Documents/GitHub/Mroovy/main.cpp",
   "file": "/home/anatol/Documents/GitHub/Mroovy/main.cpp"
 },
 {
   "directory": "/home/anatol/Documents/GitHub/Mroovy/build",
-  "command": "/usr/bin/c++   -g   -Wall -Wextra --pedantic -o CMakeFiles/main.dir/Library.cpp.o -c /home/anatol/Documents/GitHub/Mroovy/Library.cpp",
+  "command": "/usr/bin/c++   -g   --static -O3 -o CMakeFiles/main.dir/Library.cpp.o -c /home/anatol/Documents/GitHub/Mroovy/Library.cpp",
   "file": "/home/anatol/Documents/GitHub/Mroovy/Library.cpp"
 },
 {
   "directory": "/home/anatol/Documents/GitHub/Mroovy/build",
-  "command": "/usr/bin/c++   -g   -Wall -Wextra --pedantic -o CMakeFiles/main.dir/AntColonyOptimization.cpp.o -c /home/anatol/Documents/GitHub/Mroovy/AntColonyOptimization.cpp",
+  "command": "/usr/bin/c++   -g   --static -O3 -o CMakeFiles/main.dir/AntColonyOptimization.cpp.o -c /home/anatol/Documents/GitHub/Mroovy/AntColonyOptimization.cpp",
   "file": "/home/anatol/Documents/GitHub/Mroovy/AntColonyOptimization.cpp"
 },
 {
   "directory": "/home/anatol/Documents/GitHub/Mroovy/build",
-  "command": "/usr/bin/c++   -g   -Wall -Wextra --pedantic -o CMakeFiles/main.dir/Ant.cpp.o -c /home/anatol/Documents/GitHub/Mroovy/Ant.cpp",
+  "command": "/usr/bin/c++   -g   --static -O3 -o CMakeFiles/main.dir/Ant.cpp.o -c /home/anatol/Documents/GitHub/Mroovy/Ant.cpp",
   "file": "/home/anatol/Documents/GitHub/Mroovy/Ant.cpp"
 },
 {
   "directory": "/home/anatol/Documents/GitHub/Mroovy/build",
-  "command": "/usr/bin/c++   -g   -Wall -Wextra --pedantic -o CMakeFiles/main.dir/GreedyAnt.cpp.o -c /home/anatol/Documents/GitHub/Mroovy/GreedyAnt.cpp",
+  "command": "/usr/bin/c++   -g   --static -O3 -o CMakeFiles/main.dir/GreedyAnt.cpp.o -c /home/anatol/Documents/GitHub/Mroovy/GreedyAnt.cpp",
   "file": "/home/anatol/Documents/GitHub/Mroovy/GreedyAnt.cpp"
 },
 {
   "directory": "/home/anatol/Documents/GitHub/Mroovy/build",
-  "command": "/usr/bin/c++   -g   -Wall -Wextra --pedantic -o CMakeFiles/main.dir/PheromoneAnt.cpp.o -c /home/anatol/Documents/GitHub/Mroovy/PheromoneAnt.cpp",
+  "command": "/usr/bin/c++   -g   --static -O3 -o CMakeFiles/main.dir/PheromoneAnt.cpp.o -c /home/anatol/Documents/GitHub/Mroovy/PheromoneAnt.cpp",
   "file": "/home/anatol/Documents/GitHub/Mroovy/PheromoneAnt.cpp"
 }
 ]

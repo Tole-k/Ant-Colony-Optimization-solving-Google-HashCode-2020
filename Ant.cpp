@@ -26,21 +26,16 @@ Ant::Ant(int deadline, int numberOfLibraries)
 int Ant::mutate(std::vector<Library> &libraries, int deadline)
 {
 	int bestValue = totalValue(libraries, deadline);
-	std::cerr << "best val at the begg: " << bestValue << std::endl;
+//	std::cerr << "best val at the begg: " << bestValue << std::endl;
 	auto bestPath = m_path;
 	int iterations = 0;
-	for (int i = 0; i < 500 && iterations < 20; i++)
+	for (int i = 0; i < 1000 && iterations < 50; i++)
 	{
 		auto m_path_copy = m_path;
 		int deadline_copy = deadline;
 		int idx1 = rand() % m_path.size();
 		int idx2 = rand() % m_path.size();
 		std::swap(m_path[idx1], m_path[idx2]);
-		// if (m_path == m_path_copy)
-		// {
-		// 	// std::cout << "lipa jest" << std::endl;
-		// 	continue;
-		// }
 
 		int total{};
 		std::unordered_set<int> scanned;
@@ -68,7 +63,7 @@ int Ant::mutate(std::vector<Library> &libraries, int deadline)
 			m_path_copy = m_path;
 			++iterations;
 			i = 0;
-			std::cerr << "new best Value: " << bestValue << std::endl;
+//			std::cerr << "new best Value: " << bestValue << std::endl;
 		}
 		m_path = m_path_copy;
 		deadline = deadline_copy;
@@ -81,7 +76,6 @@ int Ant::totalValue(std::vector<Library> &libraries, int deadline)
 {
 	int total{};
 	std::unordered_set<int> scanned;
-	// std::cerr << "totalValue " << deadline << " " << m_path[0].first << " " << m_path[0].second << std::endl;
 	for (auto &lib : m_path)
 	{
 		int signedIn = libraries[lib.first].getNumberOfBooksScanned(deadline);
@@ -108,7 +102,7 @@ void Ant::calculatePheromonesDeltas(std::vector<Library> &libraries, int bestVal
 	for (size_t i = 0; i < m_path.size() - 1; i++)
 	{
 		deltaPheromones[std::make_pair(i, m_path[i + 1].first)] += (1 / (1 + (double)(bestValue - totalValue) / totalValue));
-		bookDeltaPheromones[m_path[i].first] += (1 / (1 + (double)(bestValue - totalValue) / totalValue)) / 7;
+		bookDeltaPheromones[m_path[i].first] += (1 / (1 + (double)(bestValue - totalValue) / totalValue)) / 1000;
 	}
 }
 
@@ -132,12 +126,8 @@ std::vector<int> Ant::GetPath()
 	return toReturn;
 }
 
-// int Ant::m_alfa = 5.0;
-// int Ant::m_beta = 1.0;
-// int Ant::m_gamma = 1.0;
 std::map<std::pair<int, int>, std::pair<double, int>> Ant::pheromones;
 std::map<std::pair<int, int>, double> Ant::deltaPheromones;
-// std::default_random_engine Ant::generator;
 
 std::vector<std::pair<double, int>> Ant::bookPheromones;
 std::vector<double> Ant::bookDeltaPheromones;

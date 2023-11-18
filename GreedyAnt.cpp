@@ -6,40 +6,35 @@
 
 int GreedyAnt::nextLibrary(std::vector<Library> &libraries, int iter, int p) {
 
-    /*int bestIdx;
+    int bestIdx = -1;
     double bestValue{};
 	double previous{};
 	for (size_t i = 0; i < libraries.size(); i++)
 	{
 		if (!m_signedIn[i])
 		{
-			double prob = calculateProbability(libraries[i], i, iter, p);
-			if (prob == -1.0)
+			double approxValue = libraries[i].getApproxValue(m_deadline);
+			if (approxValue == -1.0)
 				continue;
-
-			probabilities.push_back({(prob + previous), i});
-			previous = probabilities.back().first;
+			
+			if (approxValue > bestValue) {
+				bestValue = approxValue;
+				bestIdx = i;
+			}
 		}
 	}
-	
-	if (probabilities.size() == 1)
-		return -1;
 
-	int pickedLibrary = pickLibrary(probabilities);
-	if (pickedLibrary == -1) {
-		for(auto & it : probabilities)
-			std::cerr << it.first << ' ' << it.second << std::endl;
-		std::cerr << " --------------- ERROR -------------------- " << std::endl;
-	}
-    int pickedLibrary = bestIdx;
+	if (bestIdx == -1) {
+		return -1;
+	}	
+
+	int pickedLibrary = bestIdx;
 
 	m_signedIn[pickedLibrary] = libraries[pickedLibrary].getNumberOfBooksScanned(m_deadline);
 	m_deadline -= libraries[pickedLibrary].GetSignUpTime();
 	m_path.push_back({pickedLibrary, iter});
 
-	return pickedLibrary;*/
-    return 0;
-
+	return pickedLibrary;
 }
 
 GreedyAnt::GreedyAnt(int deadline, int numberOfLibraries) : Ant(deadline, numberOfLibraries)

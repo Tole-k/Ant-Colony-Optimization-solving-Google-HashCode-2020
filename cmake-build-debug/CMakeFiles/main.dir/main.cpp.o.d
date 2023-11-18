@@ -205,7 +205,9 @@ CMakeFiles/main.dir/main.cpp.o: \
  /usr/include/c++/11/bits/unordered_set.h \
  /home/anatol/Documents/GitHub/Mroovy/Ant.h \
  /home/anatol/Documents/GitHub/Mroovy/Library.h \
- /home/anatol/Documents/GitHub/Mroovy/book.h \
+ /home/anatol/Documents/GitHub/Mroovy/Book.h \
  /home/anatol/Documents/GitHub/Mroovy/AntColonyOptimization.h \
+ /home/anatol/Documents/GitHub/Mroovy/GreedyAnt.h \
+ /home/anatol/Documents/GitHub/Mroovy/PheromoneAnt.h \
  /usr/include/c++/11/chrono /usr/include/c++/11/ratio \
  /usr/include/c++/11/ctime /usr/include/c++/11/bits/parse_numbers.h

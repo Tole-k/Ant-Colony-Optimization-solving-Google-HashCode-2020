@@ -13,10 +13,10 @@
 class Ant
 {
 protected:
-	int m_deadline;
+	int m_deadline{};
 	std::vector<std::pair<int, int>> m_path;
 	std::vector<int> m_signedIn;
-	int m_totalValue;
+	int m_totalValue{};
 
 public:
 	// static int m_alfa, m_beta, m_gamma;
@@ -29,9 +29,9 @@ public:
 	static std::vector<std::pair<double, int>> bookPheromones;
 	static std::vector<double> bookDeltaPheromones;
 
-	Ant(){};
+	Ant() = default;
 	Ant(int deadline, int numberOfLibraries);
-	virtual int nextLibrary(std::vector<Library> &libraries, int iter, int p);
+	virtual int nextLibrary(std::vector<Library> &libraries, int iter, int p) = 0;
 	int mutate(std::vector<Library> &libraries, int deadline);
 	int totalValue(std::vector<Library> &libraries, int deadline);
 	void calculatePheromonesDeltas(std::vector<Library> &libraries, int bestValue);

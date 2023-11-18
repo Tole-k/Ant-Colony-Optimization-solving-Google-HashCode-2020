@@ -1,8 +1,9 @@
 
 #include "PheromoneAnt.h"
-PheromoneAnt::PheromoneAnt(int deadline, int numberOfLibraries):Ant(deadline, numberOfLibraries)
-{}
-int PheromoneAnt::pickLibrary(std::vector<std::pair<double, int>> &probabilities) 
+PheromoneAnt::PheromoneAnt(int deadline, int numberOfLibraries) : Ant(deadline, numberOfLibraries)
+{
+}
+int PheromoneAnt::pickLibrary(std::vector<std::pair<double, int>> &probabilities)
 {
 	double sum = probabilities.back().first;
 
@@ -15,7 +16,7 @@ int PheromoneAnt::pickLibrary(std::vector<std::pair<double, int>> &probabilities
 		while (idx + i < (int)probabilities.size() && probabilities[idx + i - 1].first <= num)
 			idx += i;
 	}
-	//std::cerr << idx << " " << probabilities.size() << " " << probabilities[idx].second << std::endl;
+	// std::cerr << idx << " " << probabilities.size() << " " << probabilities[idx].second << std::endl;
 	return probabilities[idx].second;
 }
 int PheromoneAnt::nextLibrary(std::vector<Library> &libraries, int iter, int p)
@@ -40,12 +41,12 @@ int PheromoneAnt::nextLibrary(std::vector<Library> &libraries, int iter, int p)
 		return -1;
 
 	int pickedLibrary = pickLibrary(probabilities);
-//	if (pickedLibrary == -1) {
-//		for(auto & it : probabilities)
-//			std::cerr << it.first << ' ' << it.second << std::endl;
-//		std::cerr << " --------------- ERROR -------------------- " << std::endl;
-//	}
-//    int pickedLibrary = bestIdx;
+	//	if (pickedLibrary == -1) {
+	//		for(auto & it : probabilities)
+	//			std::cerr << it.first << ' ' << it.second << std::endl;
+	//		std::cerr << " --------------- ERROR -------------------- " << std::endl;
+	//	}
+	//    int pickedLibrary = bestIdx;
 
 	m_signedIn[pickedLibrary] = libraries[pickedLibrary].getNumberOfBooksScanned(m_deadline);
 	m_deadline -= libraries[pickedLibrary].GetSignUpTime();
@@ -63,7 +64,8 @@ double PheromoneAnt::calculateProbability(Library &lib, int idx, int iter, int p
 	double numOfPheromones, numOfBooksPheromones = lib.getBookPheromones(m_deadline);
 	if (m_path.size() == 0)
 		numOfPheromones = 1.0;
-	else {
+	else
+	{
 		numOfPheromones = pheromones.count({m_path.size(), idx}) ? pheromones[std::make_pair(m_path.size(), idx)].first * std::pow(1.0 - p, iter - (double)pheromones[std::make_pair(m_path.size(), idx)].second) : 1 * std::pow(1.0 - p, (double)iter);
 	}
 	// faster option:
@@ -74,3 +76,8 @@ double PheromoneAnt::calculateProbability(Library &lib, int idx, int iter, int p
 	// m_signedIn(numOfLibraries)
 	return probability;
 }
+
+int PheromoneAnt::m_alfa;
+int PheromoneAnt::m_beta;
+int PheromoneAnt::m_gamma;
+std::default_random_engine PheromoneAnt::generator;

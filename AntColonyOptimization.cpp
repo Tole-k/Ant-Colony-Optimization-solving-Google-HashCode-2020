@@ -11,30 +11,39 @@ ACO::ACO(int numberOfAnts, int deadline, double p, int numberOfLibraries, int nu
 
 	createAnts(numberOfLibraries);
 }
-
+void ACO::set_best(std::vector<Library> &libraries, std::shared_ptr<Ant> best)
+{
+	m_best = best->totalValue(libraries, m_deadline);
+	m_bestAnt = best;
+	m_bestPath = best->GetPath();
+	m_bests[0] = {m_best, m_bestAnt};
+	//	std::cerr << "set best to: " << m_best << std::endl;
+}
 void ACO::calculateBestValue(std::vector<Library> &libraries)
 {
-	for (int i = 0; i < (int)m_ants.size(); i++)
+	for (auto &m_ant : m_ants)
 	{
-		int totalValue = m_ants[i].totalValue(libraries, m_deadline);
+		int totalValue = m_ant->totalValue(libraries, m_deadline);
 		if (totalValue > m_best)
 		{
 			m_best = totalValue;
-			m_bestPath = m_ants[i].GetPath();
-			m_bestAnt = m_ants[i];
+			m_bestPath = m_ant->GetPath();
+			m_bestAnt = m_ant;
 		}
 	}
 }
 
 void ACO::createAnts(int numberOfLibraries)
 {
-	double t1 = 0.8, t2 = 0.1, t3 = 0.1;
-	for (int i = 0; i < m_numberOfAnts * t1; i++)
+	// double t1 = 0.8, t2 = 0.1, t3 = 0.1;
+	// m_ants.push_back(std::shared_ptr<Ant>(new GreedyAnt(m_deadline, numberOfLibraries)));
+	// GreedyAnt(m_deadline, numberOfLibraries);
+	for (int i = 0; i < m_numberOfAnts; i++)
 	{
-		m_ants.push_back(Ant(m_deadline, numberOfLibraries));
+		m_ants.push_back(std::shared_ptr<Ant>(new PheromoneAnt(m_deadline, numberOfLibraries)));
 	}
 
-	for (int i = 0; i < m_numberOfAnts * t2; i++)
+	/*for (int i = 0; i < m_numberOfAnts * t2; i++)
 	{
 		m_ants.push_back(Ant(m_deadline, numberOfLibraries));
 	}
@@ -42,7 +51,7 @@ void ACO::createAnts(int numberOfLibraries)
 	for (int i = 0; i < m_numberOfAnts * t3; i++)
 	{
 		m_ants.push_back(Ant(m_deadline, numberOfLibraries));
-	}
+	}*/
 }
 
 void ACO::calculatePheromones(std::vector<Library> &libraries, int iter, bool type)
@@ -58,25 +67,25 @@ void ACO::calculatePheromones(std::vector<Library> &libraries, int iter, bool ty
 	{
 		for (size_t i = 0; i < m_ants.size(); i++)
 		{
-			m_ants[i].totalValue(libraries, m_deadline);
-			totalValues[i] = {m_ants[i].getTotalValue(), i};
-			int totalValue = m_ants[i].getTotalValue();
+			m_ants[i]->totalValue(libraries, m_deadline);
+			totalValues[i] = {m_ants[i]->getTotalValue(), i};
+			int totalValue = m_ants[i]->getTotalValue();
 			totalSum += totalValue;
 		}
-		std::cerr << "CalculatePheromones" << std::endl;
+		//		std::cerr << "CalculatePheromones" << std::endl;
 	}
 	else
 	{
 		for (int i = 0; i < 10; i++)
 		{
-			m_bests[i].second.totalValue(libraries, m_deadline);
-			totalValues[i] = {m_bests[i].second.getTotalValue(), i};
-			int totalValue = m_bests[i].second.getTotalValue();
+			m_bests[i].second->totalValue(libraries, m_deadline);
+			totalValues[i] = {m_bests[i].second->getTotalValue(), i};
+			int totalValue = m_bests[i].second->getTotalValue();
 			totalSum += totalValue;
 		}
 	}
 
-	std::cerr << "average: " << totalSum / (int)m_ants.size() << std::endl;
+	//	std::cerr << "average: " << totalSum / (int)m_ants.size() << std::endl;
 
 	//	std::sort(totalValues.begin(), totalValues.end(),
 	//			  [](const std::pair<int, int> &a, const std::pair<int, int> &b)
@@ -84,7 +93,7 @@ void ACO::calculatePheromones(std::vector<Library> &libraries, int iter, bool ty
 
 	for (int i = 0; i < std::min(50, (int)totalValues.size()); i++)
 	{
-		m_ants[totalValues[i].second].calculatePheromonesDeltas(libraries, m_best);
+		m_ants[totalValues[i].second]->calculatePheromonesDeltas(libraries, m_best);
 
 		//		int totalValue = m_ants[i].mutate(libraries, m_deadline);
 		//		m_ants[i].calculatePheromonesDeltas(libraries, m_best);
@@ -97,12 +106,12 @@ void ACO::calculatePheromones(std::vector<Library> &libraries, int iter, bool ty
 			m_best = totalValues[i].first;
 			if (type)
 			{
-				m_bestPath = m_ants[i].GetPath();
+				m_bestPath = m_ants[i]->GetPath();
 				m_bestAnt = m_ants[i];
 			}
 			else
 			{
-				m_bestPath = m_bests[i].second.GetPath();
+				m_bestPath = m_bests[i].second->GetPath();
 				m_bestAnt = m_bests[i].second;
 			}
 		}
@@ -128,14 +137,11 @@ void ACO::calculatePheromones(std::vector<Library> &libraries, int iter, bool ty
 		Ant::bookPheromones[book].first = (std::pow(1.0 - m_p, iter - (double)Ant::bookPheromones[book].second - 1) * Ant::bookPheromones[book].first + Ant::bookDeltaPheromones[book] * multiplier);
 		Ant::bookPheromones[book].second = iter;
 	}
-	std::cerr << "max pheromones: " << std::max_element(Ant::pheromones.begin(), Ant::pheromones.end(), [](const std::pair<std::pair<int, int>, std::pair<double, int>> &val1, const std::pair<std::pair<int, int>, std::pair<double, int>> &val2)
-														{ return val1.second.first < val2.second.first; })
-										   ->second.first
-			  << std::endl;
-	std::cerr << "max books pheromones: " << std::max_element(Ant::bookPheromones.begin(), Ant::bookPheromones.end(), [](const std::pair<double, int> &val1, const std::pair<double, int> &val2)
-															  { return val1.first < val2.first; })
-												 ->first
-			  << std::endl;
+	// std::cerr << "max pheromones: " << std::max_element(Ant::pheromones.begin(), Ant::pheromones.end(), [](const std::pair<std::pair<int, int>, std::pair<double, int>> &val1, const std::pair<std::pair<int, int>, std::pair<double, int>> &val2)
+	// 													{ return val1.second.first < val2.second.first; })
+	// 									   ->second.first
+	// 		  << std::endl;
+	// std::cerr << "max books pheromones: " << std::max_e                       (crit = +88.8°C)
 }
 
 int ACO::iteration(std::vector<Library> &libraries, int iter)
@@ -143,7 +149,7 @@ int ACO::iteration(std::vector<Library> &libraries, int iter)
 	std::vector<bool> fullPath(m_ants.size(), false);
 	int ends = 0;
 	for (auto &ant : m_ants)
-		ant.clear(m_deadline);
+		ant->clear(m_deadline);
 
 	while (ends < m_numberOfAnts)
 	{
@@ -151,7 +157,7 @@ int ACO::iteration(std::vector<Library> &libraries, int iter)
 		{
 			if (!fullPath[i])
 			{
-				int next = m_ants[i].nextLibrary(libraries, iter, m_p);
+				int next = m_ants[i]->nextLibrary(libraries, iter, m_p);
 				if (next == -1)
 				{
 					fullPath[i] = true;
@@ -174,10 +180,10 @@ void ACO::mutate(std::vector<Library> &libraries, int iter)
 {
 	for (auto &[value, ant] : m_bests)
 	{
-		std::cerr << "before: " << value << ", " << ant.getTotalValue() << std::endl;
-		ant.mutate(libraries, m_deadline);
-		value = ant.getTotalValue();
-		std::cerr << "after: " << ant.getTotalValue() << std::endl;
+		//		std::cerr << "before: " << value << ", " << ant->getTotalValue() << std::endl;
+		ant->mutate(libraries, m_deadline);
+		value = ant->getTotalValue();
+		//		std::cerr << "after: " << ant->getTotalValue() << std::endl;
 	}
 	sort(m_bests.begin(), m_bests.end());
 	reverse(m_bests.begin(), m_bests.end());

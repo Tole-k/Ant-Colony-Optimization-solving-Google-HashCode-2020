@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = 
 
-CXX_FLAGS = -g   -Wall -Wextra --pedantic
+CXX_FLAGS = -g   --static -O3
 

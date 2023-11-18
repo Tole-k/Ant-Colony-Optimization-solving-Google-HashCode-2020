@@ -44,7 +44,7 @@ CMakeFiles/main.dir/Library.cpp.o: \
  /usr/include/c++/11/bits/hash_bytes.h \
  /usr/include/c++/11/bits/range_access.h \
  /usr/include/c++/11/bits/vector.tcc \
- /home/anatol/Documents/GitHub/Mroovy/book.h \
+ /home/anatol/Documents/GitHub/Mroovy/Book.h \
  /usr/include/c++/11/algorithm /usr/include/c++/11/utility \
  /usr/include/c++/11/bits/stl_relops.h \
  /usr/include/c++/11/bits/stl_algo.h /usr/include/c++/11/cstdlib \

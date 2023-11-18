@@ -3,6 +3,9 @@
 #include <vector>
 #include <array>
 #include "Ant.h"
+#include "GreedyAnt.h"
+#include "PheromoneAnt.h"
+#include <memory>
 
 
 class ACO
@@ -10,26 +13,27 @@ class ACO
 	int m_numberOfIterations;
 	int m_numberOfAnts;
 	double m_p;
-	std::vector<Ant> m_ants;
+	std::vector<std::shared_ptr<Ant>> m_ants;
 	int m_deadline;
 	int m_best;
 	std::vector<int> m_bestPath;
-	std::array<std::pair<int, Ant>, 10> m_bests;
-	Ant m_bestAnt;
+	std::array<std::pair<int, std::shared_ptr<Ant>>, 10> m_bests;
+	std::shared_ptr<Ant> m_bestAnt;
 
 public:
+	ACO() = default;
 	ACO(int numberOfAnts, int deadline, double p, int numberOfLibraries, int numberOfIterations);
+	void set_best(std::vector<Library> &librarires, std::shared_ptr<Ant> best);
 	void createAnts(int numberOfLibraries);
 	void calculateBestValue(std::vector<Library> &libraries);
 
-public:
 	void calculatePheromones(std::vector<Library> &libraries, int iter, bool type);
 	void normalize();
 	int iteration(std::vector<Library> &libraries, int index);
 	void mutate(std::vector<Library> &libraries, int iter);
 	std::vector<int> GetBestPath() { return m_bestPath; }
 	int getBest() { return m_best; }
-	Ant getBestAnt() { return m_bestAnt; }
+	std::shared_ptr<Ant> getBestAnt() { return m_bestAnt; }
 };
 
 #endif

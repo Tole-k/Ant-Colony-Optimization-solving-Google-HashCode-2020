@@ -4,7 +4,7 @@
 #include "Ant.h"
 Library::Library() : m_numberOfBooks(0),
 					 m_totalValue(0),
-				     m_totalTime(0),
+					 m_totalTime(0),
 					 m_signUpTime(0),
 					 m_booksPerDay(0),
 					 m_lastBook(0)
@@ -55,17 +55,18 @@ void Library::calculatePrefixSums()
 	m_maxTime = m_numberOfBooks / m_booksPerDay + (m_numberOfBooks % m_booksPerDay > 0);
 }
 
-void Library::calculatePheromonesPrefixSums() {
-	int previous = 0;
+void Library::calculatePheromonesPrefixSums()
+{
+	double previous = 0;
 	for (int i = 0; i < m_numberOfBooks; i += m_booksPerDay)
 	{
-		int sum{};
+		double sum{};
 		for (int j = 0; j < m_booksPerDay && i + j < m_numberOfBooks; j++)
 		{
 			sum += Ant::bookPheromones[i + j].first;
 		}
 		m_pheromonesPrefixSums[i / m_booksPerDay] = sum + previous;
-		previous += sum; 
+		previous += sum;
 	}
 }
 
@@ -79,7 +80,8 @@ double Library::getApproxValue(int time)
 	return res;
 }
 
-double Library::getBookPheromones(int time) {
+double Library::getBookPheromones(int time)
+{
 	return m_pheromonesPrefixSums[std::min(time - m_signUpTime - 1, m_maxTime - 1)];
 }
 

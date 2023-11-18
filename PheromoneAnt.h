@@ -6,7 +6,7 @@ class PheromoneAnt: public Ant
 public:
     static int m_alfa, m_beta, m_gamma;
     static std::default_random_engine generator;
-	PheromoneAnt() {};
+	PheromoneAnt() = default;
 	PheromoneAnt(int deadline, int numberOfLibraries);
 	double calculateProbability(Library &lib, int idx, int iter, int p);
 	int pickLibrary(std::vector<std::pair<double, int>> &probabilities);
