@@ -23,9 +23,13 @@ for path in Round/*; do
 #					start=`date +%s.%N`
 
 					filename=$(basename $path .txt)
-					if [[ ! -f output/$filename"-"$i"_"$j"_"$k"_"$l.out ]]; then
-						# echo "file" output/$filename"-"$i"_"$j"_"$k"_"$l.out "not exist"
-					 	./$name $i $j $k $l < $path > output/$filename"-"$i"_"$j"_"$k"_"$l.out &
+					# if [[ ! -f output/$filename"-"$i"_"$j"_"$k"_"$l.out ]]; then
+					# 	# echo "file" output/$filename"-"$i"_"$j"_"$k"_"$l.out "not exist"
+					#  	# ./$name $i $j $k $l < $path > output/$filename"-"$i"_"$j"_"$k"_"$l.out &
+					# fi
+					if [[ $(cat output/$filename"-"$i"_"$j"_"$k"_"$l.out | wc -l) -eq 0 ]]; then
+						#echo $(cat output/$filename"-"$i"_"$j"_"$k"_"$l.out | wc -l)
+					  	./$name $i $j $k $l < $path > output/$filename"-"$i"_"$j"_"$k"_"$l.out &
 					fi
 
 				#	./$name < $path 

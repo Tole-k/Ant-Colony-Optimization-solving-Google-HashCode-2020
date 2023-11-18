@@ -5,7 +5,7 @@ tester="solutionTester"
 
 
 # g++ $name.cpp -O3 --static -o $name
-g++ $name.cpp ant.cpp library.cpp AntColonyOptimization.cpp book.h -g -o $name -O3 --static
+g++ $name.cpp Ant.cpp Library.cpp AntColonyOptimization.cpp Book.h GreedyAnt.cpp PheromoneAnt.cpp -o $name -O3 --static
 g++ $tester.cpp -o $tester
 res=0
 totalRuntime=0.0
@@ -16,7 +16,7 @@ for path in Round/*; do
 	start=`date +%s.%N`
 
 	filename=$(basename $path .txt)
-	./$name < $path > output/$filename.out
+	./$name 8 1 1 0.05 < $path > output/$filename.out
 #	./$name < $path 
 
 	end=`date +%s.%N`
