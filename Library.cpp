@@ -8,7 +8,7 @@ Library::Library() : m_numberOfBooks(0),
 					 m_signUpTime(0),
 					 m_booksPerDay(0),
 					 m_lastBook(0),
-                     m_maxTime(0)
+					 m_maxTime(0)
 {
 }
 
@@ -18,7 +18,7 @@ Library::Library(int n, int scanTime, int perDay) : m_numberOfBooks(n),
 													m_signUpTime(scanTime),
 													m_booksPerDay(perDay),
 													m_lastBook(0),
-                                                    m_maxTime(0)
+													m_maxTime(0)
 {
 }
 
@@ -70,6 +70,7 @@ void Library::calculatePheromonesPrefixSums()
 		m_pheromonesPrefixSums[i / m_booksPerDay] = sum + previous;
 		previous += sum;
 	}
+	//std::cerr << "previous: " << previous << std::endl;
 }
 
 double Library::getApproxValue(int time)

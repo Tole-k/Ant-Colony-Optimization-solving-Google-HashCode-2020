@@ -27,10 +27,10 @@ for path in Round/*; do
 					# 	# echo "file" output/$filename"-"$i"_"$j"_"$k"_"$l.out "not exist"
 					#  	# ./$name $i $j $k $l < $path > output/$filename"-"$i"_"$j"_"$k"_"$l.out &
 					# fi
-					# if [[ $(cat output/$filename"-"$i"_"$j"_"$k"_"$l.out | wc -l) -eq 0 ]]; then
-						#echo $(cat output/$filename"-"$i"_"$j"_"$k"_"$l.out | wc -l)
-					./$name $i $j $k $l < $path > output/$filename"+"$i"_"$j"_"$k"_"$l.out &
-					# fi
+					if [[ $(cat output/$filename"+"$i"_"$j"_"$k"_"$l.out | wc -l) -eq 0 ]]; then
+						# echo $(cat output/$filename"+"$i"_"$j"_"$k"_"$l.out | wc -l)
+						./$name $i $j $k $l < $path > output/$filename"+"$i"_"$j"_"$k"_"$l.out &
+					fi
 
 				#	./$name < $path 
 

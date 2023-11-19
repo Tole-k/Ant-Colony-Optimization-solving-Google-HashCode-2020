@@ -9,10 +9,10 @@ g++ solutionTester.cpp -o solutionTester
 #     $(echo $output | awk '{print $NF}')
 # done
 
-alfa=(1 2 4 8)
-beta=(1 2 4)
-gamma=(1 2 4)
-p=(0.01 0.025 0.05)
+alfa=(8)
+beta=(2 4)
+gamma=(2 4)
+p=(0.01 0.025 0.05 0.1)
 max=0
 
 for i in ${alfa[@]}; do
@@ -20,9 +20,9 @@ for i in ${alfa[@]}; do
         for k in ${gamma[@]}; do
             for l in ${p[@]}; do
                 res=0
-                for path in Round/f_*; do
+                for path in Round/*; do
                     filename=$(basename $path .txt)
-                    output=$(./solutionTester $path output/$filename"-"$i"_"$j"_"$k"_"$l.out)
+                    output=$(./solutionTester $path output/$filename"+"$i"_"$j"_"$k"_"$l.out)
                     ((res=res+$(echo $output | awk '{print $NF}')))
                                             
                 done

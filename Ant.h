@@ -28,9 +28,8 @@ public:
 	Ant(int deadline, int numberOfLibraries);
 	virtual int nextLibrary(std::vector<Library> &libraries, int iter, double p) = 0;
 	int mutate(std::vector<Library> &libraries, int deadline, bool localSearch = false);
-	int localSearch(std::vector<Library> &libraries, int deadline);
 	int totalValue(std::vector<Library> &libraries, int deadline);
-	void calculatePheromonesDeltas(std::vector<Library> &libraries, int bestValue);
+	void calculatePheromonesDeltas(std::vector<Library> &libraries, int bestValue, int deadline);
 	void clear(int deadline);
 	std::vector<int> GetPath();
 	inline int getTotalValue() { return m_totalValue; };

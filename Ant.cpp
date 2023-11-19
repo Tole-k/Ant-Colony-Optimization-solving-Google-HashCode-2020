@@ -21,6 +21,8 @@ int Ant::mutate(std::vector<Library> &libraries, int deadline, bool localSearch)
 {
     int bestValue = totalValue(libraries, deadline);
     int iterations = 0;
+    auto bestPath = m_path;
+
     for (int i = 0; (i < (localSearch ? m_path.size() - 1 : 1000)) && iterations < 50; i++)
     {
         int deadline_copy = deadline;
@@ -81,14 +83,30 @@ int Ant::totalValue(std::vector<Library> &libraries, int deadline)
     return m_totalValue;
 }
 
-void Ant::calculatePheromonesDeltas(std::vector<Library> &libraries, int bestValue)
+void Ant::calculatePheromonesDeltas(std::vector<Library> &libraries, int bestValue, int deadline)
 {
     int totalValue = getTotalValue();
     for (int i = 0; i < m_path.size() - 1; i++)
     {
         deltaPheromones[std::make_pair(i, m_path[i + 1].first)] += (1 / (1 + (double)(bestValue - totalValue) /
                                                                                  totalValue));
-        bookDeltaPheromones[m_path[i].first] += (1 / (1 + (double)(bestValue - totalValue) / totalValue)) / 1000;
+    }
+    std::unordered_set<int> scanned;
+    for (auto &lib : m_path)
+    {
+        int signedIn = libraries[lib.first].getNumberOfBooksScanned(deadline);
+        deadline -= libraries[lib.first].GetSignUpTime();
+        int scannedFromThisLib{};
+        for (auto &[bookIdx, bookValue] : libraries[lib.first].GetAllBooks())
+        {
+            if (!scanned.count(bookIdx))
+            {
+                scanned.insert(bookIdx);
+                bookDeltaPheromones[bookIdx] += (1 / (1 + (double)(bestValue - totalValue) / totalValue)) / 1000;
+                if (++scannedFromThisLib >= signedIn)
+                    break;
+            }
+        }
     }
 }
 

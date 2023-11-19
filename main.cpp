@@ -42,8 +42,8 @@ void solve(double p)
     }
     int numberOfIterations = 1000;
 
-    PheromoneAnt::generator.seed(42);
-    srand(20);
+    PheromoneAnt::generator.seed(20);
+    srand(42);
 
     auto greedyAnt = std::shared_ptr<Ant>(new GreedyAnt(days, numOfLibraries));
 

@@ -93,7 +93,8 @@
       "streambuf": "cpp",
       "thread": "cpp",
       "typeinfo": "cpp",
-      "__nullptr": "cpp"
+      "__nullptr": "cpp",
+      "csignal": "cpp"
     }
   }
 }

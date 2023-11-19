@@ -67,10 +67,13 @@ void ACO::calculatePheromones(std::vector<Library> &libraries, int iter, bool ty
             totalSum += totalValue;
         }
     }
+//    std::cerr << "Average: " << totalSum / m_ants.size() << std::endl;
+    std::sort(totalValues.begin(), totalValues.end());
+    std::reverse(totalValues.begin(), totalValues.end());
 
     for (int i = 0; i < std::min(50, (int)totalValues.size()); i++)
     {
-        m_ants[totalValues[i].second]->calculatePheromonesDeltas(libraries, m_best);
+        m_ants[totalValues[i].second]->calculatePheromonesDeltas(libraries, m_best, m_deadline);
         if (totalValues[i].first > m_best)
         {
             m_best = totalValues[i].first;
@@ -108,6 +111,14 @@ void ACO::calculatePheromones(std::vector<Library> &libraries, int iter, bool ty
                                            Ant::bookDeltaPheromones[book] * multiplier);
         Ant::bookPheromones[book].second = iter;
     }
+    //     std::cerr << "max pheromones: " << std::max_element(Ant::pheromones.begin(), Ant::pheromones.end(), [](const std::pair<std::pair<int, int>, std::pair<double, int>> &val1, const std::pair<std::pair<int, int>, std::pair<double, int>> &val2)
+    //                                                         { return val1.second.first < val2.second.first; })
+    //                                            ->second.first
+    //               << std::endl;
+    //     std::cerr << "max books pheromones: " << std::max_element(Ant::bookPheromones.begin(), Ant::bookPheromones.end(), [](const std::pair<double, int> &val1, const std::pair<double, int> &val2)
+    //                                                              { return val1.first < val2.first; })
+    //                                                 ->first
+    //               << std::endl;
 }
 
 int ACO::iteration(std::vector<Library> &libraries, int iter)
