@@ -23,14 +23,14 @@ class ACO
 public:
 	ACO() = default;
 	ACO(int numberOfAnts, int deadline, double p, int numberOfLibraries, int numberOfIterations);
-	void set_best(std::vector<Library> &librarires, std::shared_ptr<Ant> best);
+	void set_best(std::vector<Library> &librarires, const std::shared_ptr<Ant>& best);
 	void createAnts(int numberOfLibraries);
 	void calculateBestValue(std::vector<Library> &libraries);
 
 	void calculatePheromones(std::vector<Library> &libraries, int iter, bool type);
-	void normalize();
+	static void normalize();
 	int iteration(std::vector<Library> &libraries, int index);
-	void mutate(std::vector<Library> &libraries, int iter);
+	void mutate(std::vector<Library> &libraries, int iter, bool localSearch = false);
 	std::vector<int> GetBestPath() { return m_bestPath; }
 	int getBest() { return m_best; }
 	std::shared_ptr<Ant> getBestAnt() { return m_bestAnt; }

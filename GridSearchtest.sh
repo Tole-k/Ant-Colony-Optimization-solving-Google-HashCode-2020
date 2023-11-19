@@ -9,10 +9,10 @@ g++ $name.cpp Ant.cpp Library.cpp AntColonyOptimization.cpp Book.h GreedyAnt.cpp
 g++ $tester.cpp -o $tester
 res=0
 totalRuntime=0.0
-alfa=(1 2 4 8)
-beta=(1 2 4)
-gamma=(1 2 4)
-p=(0.01 0.025 0.05)
+alfa=(8)
+beta=(2 4)
+gamma=(2 4)
+p=(0.01 0.025 0.05 0.1)
 
 for path in Round/*; do
 	echo $path
@@ -27,10 +27,10 @@ for path in Round/*; do
 					# 	# echo "file" output/$filename"-"$i"_"$j"_"$k"_"$l.out "not exist"
 					#  	# ./$name $i $j $k $l < $path > output/$filename"-"$i"_"$j"_"$k"_"$l.out &
 					# fi
-					if [[ $(cat output/$filename"-"$i"_"$j"_"$k"_"$l.out | wc -l) -eq 0 ]]; then
+					# if [[ $(cat output/$filename"-"$i"_"$j"_"$k"_"$l.out | wc -l) -eq 0 ]]; then
 						#echo $(cat output/$filename"-"$i"_"$j"_"$k"_"$l.out | wc -l)
-					  	./$name $i $j $k $l < $path > output/$filename"-"$i"_"$j"_"$k"_"$l.out &
-					fi
+					./$name $i $j $k $l < $path > output/$filename"+"$i"_"$j"_"$k"_"$l.out &
+					# fi
 
 				#	./$name < $path 
 

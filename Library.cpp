@@ -7,7 +7,8 @@ Library::Library() : m_numberOfBooks(0),
 					 m_totalTime(0),
 					 m_signUpTime(0),
 					 m_booksPerDay(0),
-					 m_lastBook(0)
+					 m_lastBook(0),
+                     m_maxTime(0)
 {
 }
 
@@ -16,7 +17,8 @@ Library::Library(int n, int scanTime, int perDay) : m_numberOfBooks(n),
 													m_totalTime(0),
 													m_signUpTime(scanTime),
 													m_booksPerDay(perDay),
-													m_lastBook(0)
+													m_lastBook(0),
+                                                    m_maxTime(0)
 {
 }
 
@@ -34,7 +36,7 @@ void Library::sort()
 
 void Library::calculateTotalTime()
 {
-	m_totalTime = m_books.size() / m_booksPerDay + (int)((m_books.size() % m_booksPerDay) != 0) + m_signUpTime;
+	m_totalTime = (int)m_books.size() / m_booksPerDay + (int)((m_books.size() % m_booksPerDay) != 0) + m_signUpTime;
 }
 
 void Library::calculatePrefixSums()
@@ -96,5 +98,5 @@ std::vector<Book> Library::getBooks(int numberOfBooksToReturn)
 
 int Library::getNumberOfBooksScanned(int deadline)
 {
-	return std::min((long long)m_numberOfBooks, (long long)(deadline - m_signUpTime) * m_booksPerDay);
+	return (int)std::min((long long)m_numberOfBooks, (long long)(deadline - m_signUpTime) * m_booksPerDay);
 }

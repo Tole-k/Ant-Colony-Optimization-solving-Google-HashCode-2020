@@ -1,41 +1,40 @@
-//
-// Created by anatol on 14.11.23.
-//
 #include "Ant.h"
 #include "GreedyAnt.h"
 
-int GreedyAnt::nextLibrary(std::vector<Library> &libraries, int iter, int p) {
+int GreedyAnt::nextLibrary(std::vector<Library> &libraries, int iter, double p)
+{
 
     int bestIdx = -1;
     double bestValue{};
-	double previous{};
-	for (size_t i = 0; i < libraries.size(); i++)
-	{
-		if (!m_signedIn[i])
-		{
-			double approxValue = libraries[i].getApproxValue(m_deadline);
-			if (approxValue == -1.0)
-				continue;
-			
-			if (approxValue > bestValue) {
-				bestValue = approxValue;
-				bestIdx = i;
-			}
-		}
-	}
+    double previous{};
+    for (int i = 0; i < libraries.size(); i++)
+    {
+        if (!m_signedIn[i])
+        {
+            double approxValue = libraries[i].getApproxValue(m_deadline);
+            if (approxValue == -1.0)
+                continue;
 
-	if (bestIdx == -1) {
-		return -1;
-	}	
+            if (approxValue > bestValue)
+            {
+                bestValue = approxValue;
+                bestIdx = i;
+            }
+        }
+    }
 
-	int pickedLibrary = bestIdx;
+    if (bestIdx == -1)
+    {
+        return -1;
+    }
 
-	m_signedIn[pickedLibrary] = libraries[pickedLibrary].getNumberOfBooksScanned(m_deadline);
-	m_deadline -= libraries[pickedLibrary].GetSignUpTime();
-	m_path.push_back({pickedLibrary, iter});
+    int pickedLibrary = bestIdx;
 
-	return pickedLibrary;
+    m_signedIn[pickedLibrary] = libraries[pickedLibrary].getNumberOfBooksScanned(m_deadline);
+    m_deadline -= libraries[pickedLibrary].GetSignUpTime();
+    m_path.emplace_back(pickedLibrary, iter);
+
+    return pickedLibrary;
 }
 
-GreedyAnt::GreedyAnt(int deadline, int numberOfLibraries) : Ant(deadline, numberOfLibraries)
-{}
+GreedyAnt::GreedyAnt(int deadline, int numberOfLibraries) : Ant(deadline, numberOfLibraries) {}

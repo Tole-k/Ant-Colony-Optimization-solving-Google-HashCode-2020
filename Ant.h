@@ -19,11 +19,6 @@ protected:
 	int m_totalValue{};
 
 public:
-	// static int m_alfa, m_beta, m_gamma;
-	// static std::default_random_engine generator;
-
-	// double calculateProbability(Library &lib, int idx, int iter, int p);
-	// int pickLibrary(std::vector<std::pair<double, int>> &probabilities);
 	static std::map<std::pair<int, int>, std::pair<double, int>> pheromones;
 	static std::map<std::pair<int, int>, double> deltaPheromones;
 	static std::vector<std::pair<double, int>> bookPheromones;
@@ -31,8 +26,9 @@ public:
 
 	Ant() = default;
 	Ant(int deadline, int numberOfLibraries);
-	virtual int nextLibrary(std::vector<Library> &libraries, int iter, int p) = 0;
-	int mutate(std::vector<Library> &libraries, int deadline);
+	virtual int nextLibrary(std::vector<Library> &libraries, int iter, double p) = 0;
+	int mutate(std::vector<Library> &libraries, int deadline, bool localSearch = false);
+	int localSearch(std::vector<Library> &libraries, int deadline);
 	int totalValue(std::vector<Library> &libraries, int deadline);
 	void calculatePheromonesDeltas(std::vector<Library> &libraries, int bestValue);
 	void clear(int deadline);
