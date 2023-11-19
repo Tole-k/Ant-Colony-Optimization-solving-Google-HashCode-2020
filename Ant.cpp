@@ -21,7 +21,7 @@ int Ant::mutate(std::vector<Library> &libraries, int deadline, bool localSearch)
 {
     int bestValue = totalValue(libraries, deadline);
     int iterations = 0;
-    for (int i = 0; (i < localSearch ? m_path.size() - 1 : 1000) && iterations < 50; i++)
+    for (int i = 0; (i < (localSearch ? m_path.size() - 1 : 1000)) && iterations < 50; i++)
     {
         int deadline_copy = deadline;
 
