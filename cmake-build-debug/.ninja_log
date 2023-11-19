@@ -1,8 +1,0 @@
-# ninja log v5
-1	47	1700133956586678862	build.ninja	8eb0434cae55d75d
-1	2218	1700131802943716657	CMakeFiles/main.dir/library.cpp.o	49869d5d9e53ceba
-2	2874	1700132226426523038	CMakeFiles/main.dir/main.cpp.o	693477424716d62b
-2875	3068	1700132226618518292	main	279238e689b1b8d1
-3	1560	1700131802283686941	CMakeFiles/main.dir/GreedyAnt.cpp.o	f6c212c78f93e8ec
-1	4198	1700131804915805699	CMakeFiles/main.dir/AntColonyOptimization.cpp.o	ece5edb7fb35b795
-2	3732	1700131804451784725	CMakeFiles/main.dir/ant.cpp.o	4cbd73657905ece4

@@ -1,3 +1,0 @@
-/home/anatol/Documents/GitHub/Mroovy/build/CMakeFiles/main.dir
-/home/anatol/Documents/GitHub/Mroovy/build/CMakeFiles/edit_cache.dir
-/home/anatol/Documents/GitHub/Mroovy/build/CMakeFiles/rebuild_cache.dir
