@@ -10,7 +10,7 @@
 
 class ACO
 {
-	int m_numberOfIterations;
+//	int m_numberOfIterations;
 	int m_numberOfAnts;
 	double m_p;
 	std::vector<std::shared_ptr<Ant>> m_ants;
@@ -22,14 +22,15 @@ class ACO
 
 public:
 	ACO() = default;
-	ACO(int numberOfAnts, int deadline, double p, int numberOfLibraries, int numberOfIterations);
+	ACO(int numberOfAnts, int deadline, double p, int numberOfLibraries);
+	// for purpose of greedy ant
 	void set_best(std::vector<Library> &librarires, const std::shared_ptr<Ant>& best);
 	void createAnts(int numberOfLibraries);
 	void calculateBestValue(std::vector<Library> &libraries);
 
 	void calculatePheromones(std::vector<Library> &libraries, int iter, bool type);
-	static void normalize();
-	int iteration(std::vector<Library> &libraries, int index);
+//	static void normalize();
+	void iteration(std::vector<Library> &libraries, int index);
 	void mutate(std::vector<Library> &libraries, int iter, bool localSearch = false);
 	std::vector<int> GetBestPath() { return m_bestPath; }
 	int getBest() { return m_best; }

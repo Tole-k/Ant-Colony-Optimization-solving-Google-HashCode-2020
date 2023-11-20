@@ -14,15 +14,15 @@ public:
 		return value > book.value;
 	}
 
-	inline bool operator==(const Book &book) const
-	{
-		return number == book.number;
-	}
+	// inline bool operator==(const Book &book) const
+	// {
+	// 	return number == book.number;
+	// }
 
-	inline bool operator>(const Book &book) const
-	{
-		return number > book.number;
-	}
+	// inline bool operator>(const Book &book) const
+	// {
+	// 	return number > book.number;
+	// }
 };
 
 

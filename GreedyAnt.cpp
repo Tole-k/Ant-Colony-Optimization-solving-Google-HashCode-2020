@@ -1,12 +1,12 @@
 #include "Ant.h"
 #include "GreedyAnt.h"
 
+GreedyAnt::GreedyAnt(int deadline, int numberOfLibraries) : Ant(deadline, numberOfLibraries) {}
 int GreedyAnt::nextLibrary(std::vector<Library> &libraries, int iter, double p)
 {
 
     int bestIdx = -1;
     double bestValue{};
-    double previous{};
     for (int i = 0; i < libraries.size(); i++)
     {
         if (!m_signedIn[i])
@@ -30,11 +30,10 @@ int GreedyAnt::nextLibrary(std::vector<Library> &libraries, int iter, double p)
 
     int pickedLibrary = bestIdx;
 
-    m_signedIn[pickedLibrary] = libraries[pickedLibrary].getNumberOfBooksScanned(m_deadline);
-    m_deadline -= libraries[pickedLibrary].GetSignUpTime();
-    m_path.emplace_back(pickedLibrary, iter);
+    m_signedIn[pickedLibrary] = true;
+    m_deadline -= libraries[pickedLibrary].getSignUpTime();
+    m_path.emplace_back(pickedLibrary);
 
     return pickedLibrary;
 }
 
-GreedyAnt::GreedyAnt(int deadline, int numberOfLibraries) : Ant(deadline, numberOfLibraries) {}

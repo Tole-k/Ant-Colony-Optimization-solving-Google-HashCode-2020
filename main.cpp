@@ -12,6 +12,8 @@
 void solve(double p)
 {
     auto startClock = std::chrono::high_resolution_clock::now();
+
+	// reading data
     int numOfBooks, numOfLibraries, days;
     std::cin >> numOfBooks >> numOfLibraries >> days;
     Ant::bookDeltaPheromones.resize(numOfBooks);
@@ -37,33 +39,34 @@ void solve(double p)
             std::cin >> num;
             libraries[i].addBook(num, values[num]);
         }
-        libraries[i].calculateTotalTime();
+//        libraries[i].calculateTotalTime();
         libraries[i].calculatePrefixSums();
     }
-    int numberOfIterations = 1000;
 
-    PheromoneAnt::generator.seed(20);
+    PheromoneAnt::generator.seed(42);
     srand(42);
 
     auto greedyAnt = std::shared_ptr<Ant>(new GreedyAnt(days, numOfLibraries));
 
-    while (greedyAnt->nextLibrary(libraries, 0, 0.05) != -1)
-        ;
-    ACO testInstance(1, days, p, numOfLibraries, numberOfIterations);
+    while (greedyAnt->nextLibrary(libraries, 0, p) != -1);
+
+	// Mesure time of one full iteration to know how many ants can be used
+    ACO testInstance(1, days, p, numOfLibraries);
     testInstance.iteration(libraries, 0);
-    auto startClockGreedy = std::chrono::high_resolution_clock::now();
+    auto startClockOneIter = std::chrono::high_resolution_clock::now();
     testInstance.iteration(libraries, 1);
-    auto endClockGreedy = std::chrono::high_resolution_clock::now();
+    auto endClockOneIter = std::chrono::high_resolution_clock::now();
 
-    int numberOfAnts = std::min(std::max(2, 10 * 1000000 / (int)std::chrono::duration_cast<std::chrono::microseconds>(endClockGreedy - startClockGreedy).count()), 1000);
+	// Minimum 2 ants, and maximum 1000 <- more iterations prefered
+    int numberOfAnts = std::min(std::max(2, 10 * 1000000 / (int)std::chrono::duration_cast<std::chrono::microseconds>(endClockOneIter - startClockOneIter).count()), 1000);
 
-    ACO instance(numberOfAnts, days, 0.05, numOfLibraries, numberOfIterations);
+    ACO instance(numberOfAnts, days, p, numOfLibraries);
     instance.set_best(libraries, greedyAnt);
 
     for (int i = 0;; i++)
     {
         auto startClockIter = std::chrono::high_resolution_clock::now();
-        // std::cerr << "--------- iter: " << i << " ------------" << std::endl;
+        std::cerr << "--------- iter: " << i << " ------------" << std::endl;
 
         if (i % 5 == 0 && i != 0)
         {
@@ -78,11 +81,12 @@ void solve(double p)
 
         auto endClock = std::chrono::high_resolution_clock::now();
 
-        // std::cerr << instance.getBest() << std::endl;
+        std::cerr << instance.getBest() << std::endl;
 
+		// if next iteration can not be start safety -> print result
         if (std::chrono::duration_cast<std::chrono::seconds>(endClock - startClockIter).count() +
                 std::chrono::duration_cast<std::chrono::seconds>(endClock - startClock).count() >
-            200)
+            280)
             break;
     }
 
@@ -90,24 +94,21 @@ void solve(double p)
     int deadline = days;
     std::cout << path.size() << std::endl;
     std::set<int> scanned;
-    int total{};
     for (auto &idx : path)
     {
 
-        int signedIn = libraries[idx].getNumberOfBooksScanned(deadline);
-        deadline -= libraries[idx].GetSignUpTime();
+        int numOfBooks = libraries[idx].getNumberOfBooksScanned(deadline);
+        deadline -= libraries[idx].getSignUpTime();
         int scannedFromThisLib{};
         std::vector<int> toCout;
-        auto books = libraries[idx].GetAllBooks();
+        auto books = libraries[idx].getAllBooks();
         for (auto &[number, value] : books)
         {
             if (!scanned.count(number))
             {
-
-                toCout.push_back(number);
-                total += value;
+                toCout.emplace_back(number);
                 scanned.insert(number);
-                if (++scannedFromThisLib >= signedIn)
+                if (++scannedFromThisLib >= numOfBooks)
                     break;
             }
         }
@@ -130,9 +131,9 @@ void solve(double p)
 
 int main(int argc, char *argv[])
 {
-    int alfa = atoi(argv[1]), beta = atoi(argv[2]), gamma = atoi(argv[3]), p = (double)atof(argv[4]);
-    PheromoneAnt::m_alfa = alfa;
-    PheromoneAnt::m_beta = beta;
-    PheromoneAnt::m_gamma = gamma;
-    solve(p);
+
+    PheromoneAnt::m_alfa = 8;
+    PheromoneAnt::m_beta = 4;
+    PheromoneAnt::m_gamma = 2;
+    solve(0.1);
 }

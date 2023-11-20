@@ -16,7 +16,7 @@ for path in Round/*; do
 	start=`date +%s.%N`
 
 	filename=$(basename $path .txt)
-	./$name 8 1 1 0.05 < $path > output/$filename.out
+	./$name 8 4 2 0.1 < $path > output/$filename.out
 #	./$name < $path 
 
 	end=`date +%s.%N`

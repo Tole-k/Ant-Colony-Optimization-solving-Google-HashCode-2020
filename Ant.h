@@ -14,7 +14,7 @@ class Ant
 {
 protected:
 	int m_deadline{};
-	std::vector<std::pair<int, int>> m_path;
+	std::vector<int> m_path;
 	std::vector<int> m_signedIn;
 	int m_totalValue{};
 
@@ -31,7 +31,7 @@ public:
 	int totalValue(std::vector<Library> &libraries, int deadline);
 	void calculatePheromonesDeltas(std::vector<Library> &libraries, int bestValue, int deadline);
 	void clear(int deadline);
-	std::vector<int> GetPath();
+	std::vector<int> GetPath() { return m_path; };
 	inline int getTotalValue() { return m_totalValue; };
 	inline bool operator<(const Ant &ant) const { return m_deadline > ant.m_deadline; }
 };

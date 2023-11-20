@@ -9,12 +9,12 @@ int PheromoneAnt::pickLibrary(std::vector<std::pair<double, int>> &probabilities
     double sum = probabilities.back().first;
 
     std::uniform_real_distribution<double> distribution(0.0, 1.0);
-    double num = distribution(generator) * sum;
+    double randNum = distribution(generator) * sum;
 
     int idx{};
     for (int i = (int)probabilities.size(); i > 0; i /= 2)
     {
-        while (idx + i < (int)probabilities.size() && probabilities[idx + i - 1].first <= num)
+        while (idx + i < (int)probabilities.size() && probabilities[idx + i - 1].first <= randNum)
             idx += i;
     }
 
@@ -44,9 +44,9 @@ int PheromoneAnt::nextLibrary(std::vector<Library> &libraries, int iter, double 
 
     int pickedLibrary = pickLibrary(probabilities);
 
-    m_signedIn[pickedLibrary] = libraries[pickedLibrary].getNumberOfBooksScanned(m_deadline);
-    m_deadline -= libraries[pickedLibrary].GetSignUpTime();
-    m_path.emplace_back(pickedLibrary, iter);
+    m_signedIn[pickedLibrary] = true;
+    m_deadline -= libraries[pickedLibrary].getSignUpTime();
+    m_path.emplace_back(pickedLibrary);
 
     return pickedLibrary;
 }
@@ -59,14 +59,10 @@ double PheromoneAnt::calculateProbability(Library &lib, int idx, int iter, doubl
         return -1.0;
 
     double numOfPheromones, numOfBooksPheromones = lib.getBookPheromones(m_deadline);
-    if (m_path.empty())
-        numOfPheromones = 1.0;
-    else
-    {
-        numOfPheromones = pheromones.count({m_path.size(), idx})
-                              ? pheromones[std::make_pair(m_path.size(), idx)].first * std::pow(1.0 - p, iter - (double)pheromones[std::make_pair(m_path.size(), idx)].second)
-                              : 1 * std::pow(1.0 - p, (double)iter);
-    }
+
+	numOfPheromones = pheromones.count({m_path.size(), idx})
+						  ? pheromones[std::make_pair(m_path.size(), idx)].first * std::pow(1.0 - p, iter - (double)pheromones[std::make_pair(m_path.size(), idx)].second)
+						  : 1 * std::pow(1.0 - p, (double)iter);
 
     double probability = pow(totalValue, m_alfa) * pow(numOfPheromones, m_beta) * pow(numOfBooksPheromones, m_gamma);
 
