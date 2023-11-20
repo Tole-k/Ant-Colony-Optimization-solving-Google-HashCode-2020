@@ -63,7 +63,6 @@ void ACO::calculatePheromones(std::vector<Library> &libraries, int iter, bool ty
         {
             int totalValue = m_bests[i].second->totalValue(libraries, m_deadline);
             totalValues[i] = {totalValue, i};
-//            int totalValue = m_bests[i].second->getTotalValue();
             totalSum += totalValue;
         }
     }
@@ -163,16 +162,3 @@ void ACO::mutate(std::vector<Library> &libraries, int iter, bool localSearch)
     reverse(m_bests.begin(), m_bests.end());
     calculatePheromones(libraries, iter, false);
 }
-
-// void ACO::normalize()
-// {
-//     auto maximum = std::max_element(Ant::pheromones.begin(), Ant::pheromones.end(),
-//                                     [](const std::pair<std::pair<int, int>, std::pair<double, int>> &val1,
-//                                        const std::pair<std::pair<int, int>, std::pair<double, int>> &val2)
-//                                     {
-//                                         return val1.second.first < val2.second.first;
-//                                     })
-//                        ->second.first;
-//     for (auto &[road, pheromones] : Ant::pheromones)
-//         pheromones.first = pheromones.first / maximum * 10;
-// }

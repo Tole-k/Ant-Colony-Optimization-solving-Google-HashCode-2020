@@ -39,7 +39,6 @@ void solve(double p)
             std::cin >> num;
             libraries[i].addBook(num, values[num]);
         }
-//        libraries[i].calculateTotalTime();
         libraries[i].calculatePrefixSums();
     }
 
@@ -86,7 +85,7 @@ void solve(double p)
 		// if next iteration can not be start safety -> print result
         if (std::chrono::duration_cast<std::chrono::seconds>(endClock - startClockIter).count() +
                 std::chrono::duration_cast<std::chrono::seconds>(endClock - startClock).count() >
-            280)
+            60)
             break;
     }
 
