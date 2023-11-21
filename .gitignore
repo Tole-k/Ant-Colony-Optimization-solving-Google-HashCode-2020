@@ -38,7 +38,7 @@
 /cmake-build-debug/
 /build/
 /Report.docx
-/output/
+/output/*.out
 /tools/
 *.code-workspace
 ```

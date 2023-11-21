@@ -36,5 +36,5 @@ Program accepts data through the standard input and outputs the solution to the 
 For example, to run the program on the input file `a_example.txt` and output the solution to the file `a_example.out` you can use the following command:
 
 ```
-./main <../test/a_example.txt >a_example.out
+./main <../test/a_example.txt >../output/a_example.out
 ```
