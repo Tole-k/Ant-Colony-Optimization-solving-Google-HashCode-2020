@@ -31,6 +31,8 @@
 *.out
 *.app
 
+/res/Report.pdf
+/res/Rules.pdf
 /.idea/
 /project/
 /cmake-build-debug/
