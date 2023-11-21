@@ -3,7 +3,6 @@
 
 ACO::ACO(int numberOfAnts, int deadline, double p, int numberOfLibraries)
 {
-//   m_numberOfIterations = numberOfIterations;
     m_numberOfAnts = numberOfAnts;
     m_deadline = deadline;
     m_p = p;
@@ -44,7 +43,6 @@ void ACO::createAnts(int numberOfLibraries)
 
 void ACO::calculatePheromones(std::vector<Library> &libraries, int iter, bool type)
 {
-    // type == true -> after regular iteration while type == false -> after mutation
     long long totalSum{};
     std::vector<std::pair<int, int>> totalValues;
     type ? totalValues.resize(m_ants.size()) : totalValues.resize(10);
@@ -63,11 +61,9 @@ void ACO::calculatePheromones(std::vector<Library> &libraries, int iter, bool ty
         {
             int totalValue = m_bests[i].second->totalValue(libraries, m_deadline);
             totalValues[i] = {totalValue, i};
-//            int totalValue = m_bests[i].second->getTotalValue();
             totalSum += totalValue;
         }
     }
-    std::cerr << "Average: " << totalSum / m_ants.size() << std::endl;
     std::sort(totalValues.begin(), totalValues.end());
     std::reverse(totalValues.begin(), totalValues.end());
 
@@ -94,7 +90,6 @@ void ACO::calculatePheromones(std::vector<Library> &libraries, int iter, bool ty
         }
         if (type && totalValues[i].first > m_bests.back().first)
         {
-            // Insertion sort
             m_bests.back() = {totalValues[i].first, m_ants[i]};
             for (int j = (int)m_bests.size() - 1; m_bests[j].first > m_bests[j - 1].first && j > 0; j--)
             {
@@ -102,8 +97,6 @@ void ACO::calculatePheromones(std::vector<Library> &libraries, int iter, bool ty
             }
         }
     }
-
-    // ants after mutation adds 2 times more pheromones, they should be closest to optimum
     int multiplier = (type ? 1 : 2);
     for (auto &[road, delta] : Ant::deltaPheromones)
     {
@@ -164,15 +157,3 @@ void ACO::mutate(std::vector<Library> &libraries, int iter, bool localSearch)
     calculatePheromones(libraries, iter, false);
 }
 
-// void ACO::normalize()
-// {
-//     auto maximum = std::max_element(Ant::pheromones.begin(), Ant::pheromones.end(),
-//                                     [](const std::pair<std::pair<int, int>, std::pair<double, int>> &val1,
-//                                        const std::pair<std::pair<int, int>, std::pair<double, int>> &val2)
-//                                     {
-//                                         return val1.second.first < val2.second.first;
-//                                     })
-//                        ->second.first;
-//     for (auto &[road, pheromones] : Ant::pheromones)
-//         pheromones.first = pheromones.first / maximum * 10;
-// }

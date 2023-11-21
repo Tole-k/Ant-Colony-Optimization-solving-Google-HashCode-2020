@@ -21,6 +21,7 @@ void Library::addBook(int number, int value)
 	m_books.push_back({number, value});
 }
 
+
 void Library::calculatePrefixSums()
 {
 	std::sort(m_books.begin(), m_books.end());
@@ -66,6 +67,7 @@ double Library::getBookPheromones(int time)
 {
 	return m_pheromonesPrefixSums[std::min(time - m_signUpTime - 1, m_maxTime - 1)];
 }
+
 
 int Library::getNumberOfBooksScanned(int deadline)
 {

@@ -39,16 +39,15 @@ void solve(double p)
             std::cin >> num;
             libraries[i].addBook(num, values[num]);
         }
-//        libraries[i].calculateTotalTime();
         libraries[i].calculatePrefixSums();
     }
 
-    PheromoneAnt::generator.seed(42);
+    PheromoneAnt::generator.seed(20);
     srand(42);
 
     auto greedyAnt = std::shared_ptr<Ant>(new GreedyAnt(days, numOfLibraries));
 
-    while (greedyAnt->nextLibrary(libraries, 0, p) != -1);
+    while (greedyAnt->nextLibrary(libraries, 0, 0.05) != -1);
 
 	// Mesure time of one full iteration to know how many ants can be used
     ACO testInstance(1, days, p, numOfLibraries);
@@ -66,13 +65,12 @@ void solve(double p)
     for (int i = 0;; i++)
     {
         auto startClockIter = std::chrono::high_resolution_clock::now();
-        std::cerr << "--------- iter: " << i << " ------------" << std::endl;
 
         if (i % 5 == 0 && i != 0)
         {
             instance.mutate(libraries, i);
         }
-        else if (i % 10 == 0 && i != 0)
+        if (i % 10 == 0 && i != 0)
         {
             instance.mutate(libraries, i, true);
         }
@@ -80,8 +78,6 @@ void solve(double p)
         instance.iteration(libraries, i);
 
         auto endClock = std::chrono::high_resolution_clock::now();
-
-        std::cerr << instance.getBest() << std::endl;
 
 		// if next iteration can not be start safety -> print result
         if (std::chrono::duration_cast<std::chrono::seconds>(endClock - startClockIter).count() +
@@ -97,7 +93,7 @@ void solve(double p)
     for (auto &idx : path)
     {
 
-        int numOfBooks = libraries[idx].getNumberOfBooksScanned(deadline);
+        int signedIn = libraries[idx].getNumberOfBooksScanned(deadline);
         deadline -= libraries[idx].getSignUpTime();
         int scannedFromThisLib{};
         std::vector<int> toCout;
@@ -106,9 +102,10 @@ void solve(double p)
         {
             if (!scanned.count(number))
             {
-                toCout.emplace_back(number);
+
+                toCout.push_back(number);
                 scanned.insert(number);
-                if (++scannedFromThisLib >= numOfBooks)
+                if (++scannedFromThisLib >= signedIn)
                     break;
             }
         }
@@ -131,7 +128,6 @@ void solve(double p)
 
 int main(int argc, char *argv[])
 {
-
     PheromoneAnt::m_alfa = 8;
     PheromoneAnt::m_beta = 4;
     PheromoneAnt::m_gamma = 2;

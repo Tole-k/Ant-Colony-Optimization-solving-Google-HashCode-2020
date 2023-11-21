@@ -59,10 +59,10 @@ double PheromoneAnt::calculateProbability(Library &lib, int idx, int iter, doubl
         return -1.0;
 
     double numOfPheromones, numOfBooksPheromones = lib.getBookPheromones(m_deadline);
-
 	numOfPheromones = pheromones.count({m_path.size(), idx})
 						  ? pheromones[std::make_pair(m_path.size(), idx)].first * std::pow(1.0 - p, iter - (double)pheromones[std::make_pair(m_path.size(), idx)].second)
 						  : 1 * std::pow(1.0 - p, (double)iter);
+    // }
 
     double probability = pow(totalValue, m_alfa) * pow(numOfPheromones, m_beta) * pow(numOfBooksPheromones, m_gamma);
 

@@ -23,7 +23,7 @@ int Ant::mutate(std::vector<Library> &libraries, int deadline, bool localSearch)
     int bestValue = totalValue(libraries, deadline);
     int iterations = 0;
 
-    for (int i = 0; (i < (localSearch ? m_path.size() - 1 : 1000)) && iterations < 50; i++)
+    for (int i = 0; (i < (localSearch ? m_path.size() - 1 : 1000)) && iterations < (localSearch ? 10 : 50); i++)
     {
         int idx1, idx2;
         if (localSearch)
@@ -86,7 +86,7 @@ void Ant::calculatePheromonesDeltas(std::vector<Library> &libraries, int bestVal
     for (int i = 0; i < m_path.size() - 1; i++)
     {
         deltaPheromones[std::make_pair(i, m_path[i])] += (1 / (1 + (double)(bestValue - totalValue) /
-                                                                                 totalValue));
+                                                                                 std::min(totalValue, bestValue)));
     }
     std::unordered_set<int> scanned;
     for (auto &lib : m_path)
@@ -99,7 +99,7 @@ void Ant::calculatePheromonesDeltas(std::vector<Library> &libraries, int bestVal
             if (!scanned.count(bookIdx))
             {
                 scanned.insert(bookIdx);
-                bookDeltaPheromones[bookIdx] += (1 / (1 + (double)(bestValue - totalValue) / totalValue)) / 1000;
+                bookDeltaPheromones[bookIdx] += (1 / (1 + (double)(bestValue - totalValue) / std::min(bestValue, totalValue))) / 1000;
                 if (++scannedFromThisLib >= numOfScanned)
                     break;
             }
