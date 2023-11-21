@@ -14,14 +14,27 @@ The solution is based on Ant Colony Optimization algorithm.
 
 ## How to run
 
-
 1. Clone the repository
 
-
-2. In the main directory execute the following command:
+2. Compile the program using cmake, to do so please execute the following commands in the main directory of the project:
 
 ```
 cmake -B build
 cd build
 make
+```
+3. Run the program using the following command:
+
+```
+./main 
+```
+Program accepts data through the standard input and outputs the solution to the standard output. Alternatively, you can specify the input and output files using the following command:
+
+```
+./main <input_file >output_file
+```
+For example, to run the program on the input file `a_example.txt` and output the solution to the file `a_example.out` you can use the following command:
+
+```
+./main <../test/a_example.txt >a_example.out
 ```
