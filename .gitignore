@@ -39,5 +39,6 @@
 /build/
 /Report.docx
 /output/
+/tools/
 *.code-workspace
 ```
