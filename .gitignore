@@ -2,3 +2,5 @@
 /build/
 /Report.docx
 /output/
+*.code-workspace
+```
