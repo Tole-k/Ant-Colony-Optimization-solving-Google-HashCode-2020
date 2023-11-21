@@ -4,7 +4,6 @@ project(main
 	VERSION 1.0.0
 )
 
-# SET(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra --pedantic")
 SET(GCC_COVERAGE_COMPILE_FLAGS "--static -O3")
 add_definitions(${GCC_COVERAGE_COMPILE_FLAGS})
 

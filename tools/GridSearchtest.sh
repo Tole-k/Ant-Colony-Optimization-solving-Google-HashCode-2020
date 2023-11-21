@@ -4,8 +4,6 @@ name="main"
 tester="solutionTester"
 
 
-# g++ $name.cpp -O3 --static -o $name
-g++ $name.cpp Ant.cpp Library.cpp AntColonyOptimization.cpp Book.h GreedyAnt.cpp PheromoneAnt.cpp -g -o $name -O3 --static
 g++ $tester.cpp -o $tester
 res=0
 totalRuntime=0.0
@@ -14,7 +12,7 @@ beta=(2 4)
 gamma=(2 4)
 p=(0.05 0.1 0.2)
 
-for path in Round/[bef]*; do
+for path in test/[bef]*; do
 	echo $path
 	for i in ${alfa[@]}; do
 		for j in ${beta[@]}; do
@@ -29,7 +27,7 @@ for path in Round/[bef]*; do
 					# fi
 					# if [[ $(cat output/$filename"+"$i"_"$j"_"$k"_"$l.out | wc -l) -eq 0 ]]; then
 						# echo $(cat output/$filename"+"$i"_"$j"_"$k"_"$l.out | wc -l)
-					./$name $i $j $k $l < $path > output/$filename"_"$i"_"$j"_"$k"_"$l.out &
+					./cmake-build-debug/$name $i $j $k $l < $path > output/$filename"_"$i"_"$j"_"$k"_"$l.out &
 					# fi
 
 				#	./$name < $path 
