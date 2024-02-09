@@ -56,7 +56,7 @@ void solve(double p)
     testInstance.iteration(libraries, 1);
     auto endClockOneIter = std::chrono::high_resolution_clock::now();
 
-	// Minimum 2 ants, and maximum 1000 <- more iterations prefered
+	// Minimum 2 ants, and maximum 1000 <- more iterations preferred
     int numberOfAnts = std::min(std::max(2, 10 * 1000000 / (int)std::chrono::duration_cast<std::chrono::microseconds>(endClockOneIter - startClockOneIter).count()), 1000);
 
     ACO instance(numberOfAnts, days, p, numOfLibraries);
